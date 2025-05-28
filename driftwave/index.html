@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Custom PreHead code is injected here -->
+
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta charset="utf-8"/>
+
+    <!-- Builtin injector for disabling cache -->
+    <meta http-equiv="pragma" content="no-cache"/>
+
+    <!-- Set the title bar of the page -->
+    <title>Driftwave</title>
+
+    <!-- Custom PreStyle code is injected here -->
+
+
+    <!-- Set the background colour of the document -->
+    <style>
+        body {
+            background: #0;
+            color: #cccccc;
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
+        }
+
+        canvas {
+            image-rendering: optimizeSpeed;
+            -webkit-interpolation-mode: nearest-neighbor;
+            -ms-touch-action: none;
+            touch-action: none;
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
+        }
+
+        :-webkit-full-screen #canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        :-webkit-full-screen {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Custom Runner Styles */
+        div.gm4html5_div_class {
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
+        }
+
+        div.gm4html5_login {
+            padding: 20px;
+            position: absolute;
+            border: solid 2px #000000;
+            background-color: #404040;
+            color: #00ff00;
+            border-radius: 15px;
+            box-shadow: #101010 20px 20px 40px;
+        }
+
+        div.gm4html5_cancel_button {
+            float: right;
+        }
+
+        div.gm4html5_login_button {
+            float: left;
+        }
+
+        div.gm4html5_login_header {
+            text-align: center;
+        }
+
+        /* END - Custom Runner Styles */
+
+    </style>
+
+    <!-- Custom PostStyle code is injected here -->
+
+
+    <!-- Builtin injector for injecting flurry analytics code -->
+
+</head>
+
+<!-- Custom PostHead code is injected here -->
+
+
+<!-- Custom PreBody code is injected here -->
+
+
+<body>
+<div id="car_fun_loader" style="
+	margin: 0;
+	overflow: hidden;
+	position: absolute;
+	left:0;
+	top:0;
+	z-index: 9999;
+	touch-action: manipulation;
+">
+
+    <canvas id="carLoaderCanvas"></canvas>
+
+    <script>
+
+        let bar_loader_animation = undefined;
+
+        window.addEventListener('load', function () {
+
+            var canvas = document.getElementById('carLoaderCanvas');
+            var context = canvas.getContext('2d');
+
+            // Resize canvas to match window size
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            // Your drawing code here
+
+            // Optional: Adjust canvas size if the window is resized
+            window.addEventListener('resize', function () {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+
+            mouse_data = {
+                x: 0,
+                y: 0,
+                //tilt: 0,
+                //use_tilt: false,
+            }
+
+            canvas.addEventListener('mousemove', function (event) {
+                event.preventDefault();
+                mouse_data.x = event.clientX;
+                mouse_data.y = event.clientY;
+            });
+
+            canvas.addEventListener('pointermove', function (event) {
+                event.preventDefault();
+                mouse_data.x = event.clientX; // X-coordinate of the mouse pointer
+                mouse_data.y = event.clientY; // Y-coordinate of the mouse pointer
+            });
+
+            canvas.addEventListener('touchmove', function (event) {
+                event.preventDefault();
+                let touch = event.touches[0];
+                touchX = touch.clientX;
+                touchY = touch.clientY;
+            });
+
+            /*if(window.DeviceOrientationEvent){
+                window.addEventListener('deviceorientation', function(event) {
+                    let alpha = event.alpha;
+                    let beta = event.beta;
+                    let gamma = event.gamma;
+                    // Do something
+
+                    mouse_data.tilt = alpha;
+
+                    if(alpha != 0){
+                        mouse_data.use_tilt = true;
+                    }
+
+                }, false);
+            }*/
+
+            small_car_data = {
+                x: 100,
+                y: 100,
+                angle: 0,
+                speed: 0,
+            };
+
+            let lastFrameTime = 0;
+
+            function lerp(start, end, amt) {
+                return (1 - amt) * start + amt * end
+            }
+
+            function delta_lerp(start, end, amt, delta) {
+                let blend = 1 - Math.pow(1 - amt, delta * 60);
+                return lerp(start, end, blend);
+            }
+
+            function get_direction(x, y, x2, y2) {
+                return Math.atan2(y2 - y, x2 - x);
+            }
+
+            function get_distance(x, y, x2, y2) {
+                return Math.sqrt(Math.pow(x2 - x, 2) + Math.pow(y2 - y, 2));
+            }
+
+            function angleBetweenDirections(dir1, dir2) {
+                let dotProduct = Math.cos(dir1) * Math.cos(dir2) + Math.sin(dir1) * Math.sin(dir2);
+                let determinant = Math.cos(dir1) * Math.sin(dir2) - Math.sin(dir1) * Math.cos(dir2);
+                let angle = Math.atan2(determinant, dotProduct);
+                return angle;
+            }
+
+            function drawPolygons(...list_of_polygons) {
+                for (let j = 0; j < list_of_polygons.length; j++) {
+
+                    let vertices = list_of_polygons[j];
+
+                    if (vertices.length < 2) continue;
+
+                    context.beginPath();
+
+                    context.moveTo(vertices[0][0], vertices[0][1]);
+
+                    for (let i = 1; i < vertices.length; i++) {
+                        context.lineTo(vertices[i][0], vertices[i][1]);
+                    }
+
+                    context.closePath(); // Close the path to complete the shape
+                    context.stroke(); // Draw the outline of the polygon
+                    context.fill(); // Optionally, fill the polygon
+                }
+            }
+
+            function vertices_to_camera(vertices3, rotation, offsetx, offsety) {
+                let return_vertices = [];
+                for (let i = 0; i < vertices3.length; i++) {
+                    return_vertices[i] = [
+                        vertices3[i][0] * Math.cos(rotation) + vertices3[i][1] * Math.cos(rotation + Math.PI / 2) + offsetx,
+                        vertices3[i][0] * Math.sin(rotation) + vertices3[i][1] * Math.sin(rotation + Math.PI / 2) + offsety - vertices3[i][2]
+                    ];
+                }
+                return return_vertices;
+            }
+
+            function set_color(color) {
+                context.fillStyle = color;
+                context.strokeStyle = color;
+            }
+
+            context.fillStyle = 'rgba(22, 105, 255, 1)';
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            function draw(timestamp) {
+                // Calculate the time elapsed since the last frame
+                let deltaTime = Math.min(1000, timestamp - lastFrameTime) / 1000;
+                if (isNaN(deltaTime)) deltaTime = 0;
+
+                lastFrameTime = timestamp;
+
+                //small_car_data.x = delta_lerp(small_car_data.x, mouse_data.x, .1, deltaTime);
+                //small_car_data.y = delta_lerp(small_car_data.y, mouse_data.y, .1, deltaTime);
+
+                let distance = get_distance(small_car_data.x, small_car_data.y, mouse_data.x, mouse_data.y);
+
+                //console.log(direction_distance(small_car_data.angle, aim)/Math.PI/2*180);
+
+                let max_speed = canvas.width * .1 * .05;
+                small_car_data.speed = delta_lerp(small_car_data.speed, Math.min(canvas.width * .1, Math.max(0, distance - canvas.width * .05)) * .05, .2, deltaTime)
+
+                //if(mouse_data.use_tilt){
+                //	small_car_data.angle += mouse_data.tilt;
+                //} else {
+                let aim = get_direction(small_car_data.x, small_car_data.y, mouse_data.x, mouse_data.y);
+
+                if (distance > 10)
+                    small_car_data.angle = delta_lerp(small_car_data.angle, small_car_data.angle + angleBetweenDirections(small_car_data.angle, aim), small_car_data.speed / max_speed * .2, deltaTime);
+                //}
+
+                small_car_data.x += Math.cos(small_car_data.angle) * small_car_data.speed;
+                small_car_data.y += Math.sin(small_car_data.angle) * small_car_data.speed;
+
+                small_car_data.x = Math.min(Math.max(0, small_car_data.x), canvas.width);
+                small_car_data.y = Math.min(Math.max(0, small_car_data.y), canvas.height);
+
+                let angle = small_car_data.angle;
+
+                let width = canvas.width * .05;
+                let height = width * .5;
+                let vertical = width * .1;
+
+                let car_bottom_verts = [
+                    [-width / 2, -height / 2, 0],
+                    [width / 2, -height / 2, 0],
+                    [width / 2, height / 2, 0],
+                    [-width / 2, height / 2, 0]
+                ];
+
+
+                let car_top_side_verts = [
+                    [-width / 2, -height / 2, 0],
+                    [-width / 2, -height / 2, vertical],
+                    [width / 2, -height / 2, vertical],
+                    [width / 2, -height / 2, 0],
+                ];
+                let car_bottom_side_verts = [
+                    [-width / 2, height / 2, 0],
+                    [-width / 2, height / 2, vertical],
+                    [width / 2, height / 2, vertical],
+                    [width / 2, height / 2, 0],
+                ];
+                let car_front_side_verts = [
+                    [width / 2, -height / 2, 0],
+                    [width / 2, -height / 2, vertical],
+                    [width / 2, height / 2, vertical],
+                    [width / 2, height / 2, 0],
+                ];
+                let car_back_side_verts = [
+                    [-width / 2, -height / 2, 0],
+                    [-width / 2, -height / 2, vertical],
+                    [-width / 2, height / 2, vertical],
+                    [-width / 2, height / 2, 0],
+                ];
+                let car_body_front_verts = [
+                    [width / 12, -height / 2, vertical],
+                    [width / 2, -height / 2, vertical],
+                    [width / 2, height / 2, vertical],
+                    [width / 12, height / 2, vertical]
+                ];
+                let car_body_back_verts = [
+                    [-width / 2, -height / 2, vertical],
+                    [-width / 2 + width / 4, -height / 2, vertical],
+                    [-width / 2 + width / 4, height / 2, vertical],
+                    [-width / 2, height / 2, vertical]
+                ];
+                let car_body_inner_verts = [
+                    [width / 12, -height / 2, vertical],
+                    [-width / 2 + width / 4, -height / 2, vertical],
+                    [-width / 2 + width / 4, height / 2, vertical],
+                    [width / 12, height / 2, vertical],
+                ];
+                let car_body_back_roof_verts = [
+                    [width / 8 - width / 2, -height / 2, vertical * 2],
+                    [0, -height / 2, vertical * 2],
+                    [0, height / 2, vertical * 2],
+                    [width / 8 - width / 2, height / 2, vertical * 2]
+                ];
+
+
+                let car_top_side_wheel_verts1 = [
+                    [-width / 3 - width / 10, -height / 2, -vertical],
+                    [-width / 3 - width / 10, -height / 2, 0],
+                    [-width / 3 + width / 10, -height / 2, 0],
+                    [-width / 3 + width / 10, -height / 2, -vertical],
+                ];
+                let car_top_side_wheel_verts2 = [
+                    [width / 3 - width / 10, -height / 2, -vertical],
+                    [width / 3 - width / 10, -height / 2, 0],
+                    [width / 3 + width / 10, -height / 2, 0],
+                    [width / 3 + width / 10, -height / 2, -vertical],
+                ];
+                let car_bottom_side_wheel_verts1 = [
+                    [-width / 3 - width / 10, height / 2, -vertical],
+                    [-width / 3 - width / 10, height / 2, 0],
+                    [-width / 3 + width / 10, height / 2, 0],
+                    [-width / 3 + width / 10, height / 2, -vertical],
+                ];
+                let car_bottom_side_wheel_verts2 = [
+                    [width / 3 - width / 10, height / 2, -vertical],
+                    [width / 3 - width / 10, height / 2, 0],
+                    [width / 3 + width / 10, height / 2, 0],
+                    [width / 3 + width / 10, height / 2, -vertical],
+                ];
+
+                const dark_yellow = "#ff903b";
+                const light_yellow = "#ffcf31";
+                const black = "#132243";
+
+                //render code
+                context.fillStyle = 'rgba(22, 105, 255, .2)';
+                context.fillRect(0, 0, canvas.width, canvas.height);
+
+                let car_render_x = small_car_data.x;
+                let car_render_y = small_car_data.y + Math.random() * width * .03;
+
+                set_color(black);
+
+                drawPolygons(
+                    vertices_to_camera(car_top_side_wheel_verts1, angle, car_render_x, car_render_y),
+                    vertices_to_camera(car_top_side_wheel_verts2, angle, car_render_x, car_render_y),
+                    vertices_to_camera(car_bottom_side_wheel_verts1, angle, car_render_x, car_render_y),
+                    vertices_to_camera(car_bottom_side_wheel_verts2, angle, car_render_x, car_render_y),
+                );
+
+                set_color(dark_yellow);
+
+                drawPolygons(
+                    vertices_to_camera(car_top_side_verts, angle, car_render_x, car_render_y),
+                    vertices_to_camera(car_bottom_side_verts, angle, car_render_x, car_render_y),
+                    vertices_to_camera(car_front_side_verts, angle, car_render_x, car_render_y),
+                    vertices_to_camera(car_back_side_verts, angle, car_render_x, car_render_y)
+                );
+
+
+                set_color(black);
+
+                drawPolygons(
+                    vertices_to_camera(car_body_inner_verts, angle, car_render_x, car_render_y),
+                );
+
+                set_color(light_yellow);
+
+                drawPolygons(vertices_to_camera(car_body_front_verts, angle, car_render_x, car_render_y));
+                drawPolygons(vertices_to_camera(car_body_back_verts, angle, car_render_x, car_render_y));
+                drawPolygons(vertices_to_camera(car_body_back_roof_verts, angle, car_render_x, car_render_y));
+
+                let _dots = "";
+
+                if (timestamp % 1000 < 1000 * (1 / 3)) {
+                    _dots = ".  "
+                } else if (timestamp % 1000 < 1000 * (2 / 3)) {
+                    _dots = ".. "
+                } else {
+                    _dots = "..."
+                }
+
+                context.textAlign = "center";
+                context.font = String(Math.floor(canvas.width * .05)) + "px 'Courier New', monospace";
+
+                let _text = "Driftwave loading" + _dots;
+
+                for (let i = 0; i < _text.length; i++) {
+                    set_color(black);
+                    context.fillText(_text[i], canvas.width / 2 + (i - _text.length / 2) * width * .5, canvas.height / 2 + width * .04 + width * .1 * Math.sin(timestamp * .003 - i * .4));
+                    set_color("white");
+                    context.fillText(_text[i], canvas.width / 2 + (i - _text.length / 2) * width * .5, canvas.height / 2 + width * .1 * Math.sin(timestamp * .003 - i * .4));
+                }
+                ;
+
+
+                /*for(let _i = 0; _i < layers.length; _i++){
+
+                    let up = -_i*canvas.width*.01;
+
+                    context.translate(0,up);
+
+                    context.translate(small_car_data.x,small_car_data.y);
+
+                    context.rotate(angle);
+
+                    context.fillStyle = layers[_i];
+
+                    context.fillRect(-width/2,-height/2,width,height);
+
+                    context.rotate(-angle);
+
+                    context.translate(-small_car_data.x,-small_car_data.y);
+
+                    context.translate(0,-up);
+
+                }*/
+
+                //context.rotate(-angle);
+
+                // Request next frame update
+                bar_loader_animation = requestAnimationFrame(draw);
+
+            }
+
+            // Start the animation
+            draw();
+
+        });
+
+        function cancel_bar_loader_animation() {
+            cancelAnimationFrame(bar_loader_animation);
+            car_fun_loader.remove();
+        }
+    </script>
+
+</div>
+
+<div class="gm4html5_div_class" id="gm4html5_div_id">
+
+    <!-- Builtin injector for splash screen -->
+
+
+    <!-- Create the canvas element the game draws to -->
+    <canvas id="canvas" width="600" height="400">
+        <p>Your browser doesn't support HTML5 canvas.</p>
+    </canvas>
+</div>
+
+<!-- Run the game code -->
+<script type="text/javascript" src="html5game/Driftwave.js?cachebust=2070456321"></script>
+
+<!-- Builtin injector for injecting runner path -->
+
+
+<!-- Poki start -->
+<script src="poki-sdk.js"></script>
+<script>(function () {
+        function fin(ok) {
+            window.PokiSDK_OK = ok;
+            GameMaker_Init();
+        }
+
+        window.addEventListener("load", function (_) {
+            window.PokiSDK_loadState = 0;
+            if (window.PokiSDK) {
+                PokiSDK.init().then(function () {
+                    fin(true);
+                }).catch(function () {
+                    fin(false);
+                });
+            } else {
+                window.PokiSDK = null;
+                fin(false);
+            }
+        });
+    })();
+</script>
+<!-- Poki end -->
+
+
+<!-- Builtin injector for injecting google analytics code -->
+
+
+</body>
+
+<!-- Custom PostBody code is injected here -->
+
+</html>
