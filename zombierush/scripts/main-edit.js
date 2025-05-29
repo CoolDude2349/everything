@@ -1949,7 +1949,7 @@
         window["c3_runtimeInterface"] = new self.RuntimeInterface({
             useWorker: enableWorker,
             workerMainUrl: "workermain.js",
-            engineScripts: ["scripts/c3runtime.js"],
+            engineScripts: ["https://cdn.jsdelivr.net/gh/CoolDude2349/everything@main/zombierush/scripts/c3runtime.js"],
             projectScripts: [],
             mainProjectScript: "",
             scriptFolder: "scripts/",
