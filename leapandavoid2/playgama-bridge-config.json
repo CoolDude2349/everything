@@ -1,0 +1,22 @@
+{
+  "platforms": {
+      "game_distribution": {
+          "gameId": "97968209babf41e1b51ef8830b75c47a"
+    },
+      "telegram": {
+          "adsgramBlockId": ""
+    },
+      "y8": {
+          "gameId": "67caf26266e3bf5be8421de0",
+          "adsenseId": "ca-pub-2861343636416493",
+          "channelId": ""
+    },
+      "lagged": {
+          "devId": "lagdev_14462",
+          "publisherId": "ca-pub-2861343636416493"
+    },
+      "facebook": {
+          "placementId": ""
+    }
+  }
+}
