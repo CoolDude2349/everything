@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	
+	<base href = "https://cdn.jsdelivr.net/gh/CoolDude2349/everything@main/justslide/">
 	<meta charset="utf-8">
 	
-	<title>Just Slideremastered</title>
-	
+
 	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	
@@ -23,9 +22,35 @@
 	</script>
 	
 	<style>
-		html,body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
-		#openfl-content { background: #000000; width: 320px; height: 480px; }
-		#progress { position: relative; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%; }
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#openfl-content {
+  background: #cfc; /* just for visibility */
+  width: 320px;
+  height: 480px;
+  position: relative;
+}
+
+#progress {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+}
+
+
+
+
 
 	</style>
 	
@@ -53,6 +78,10 @@
 		var __completionCallback = function __completionCallback() {
 			__progressBar.parentNode.removeChild(__progressBar);
 			lime.embed ("Just Slideremastered", "openfl-content", 320, 480, { parameters: {} });
+
+
+
+
 		};
 
 		__loadWithProgress(__filesToLoad, __progressListener, __completionCallback);
