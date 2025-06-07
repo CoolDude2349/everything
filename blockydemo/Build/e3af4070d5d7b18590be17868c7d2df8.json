@@ -1,0 +1,16 @@
+{
+"companyName": "Gamonaut.com",
+"productName": "Blocky Demolition",
+"productVersion": "2.00",
+"dataUrl": "5bef4779b93c78e4541559b6e007ce52.unityweb",
+"wasmCodeUrl": "f03e20d9219dd22f67b6f4bd33adbda5.unityweb",
+"wasmFrameworkUrl": "fedbc538846e3b0df494062af3ca437f.unityweb",
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.2.8f1"
+}
