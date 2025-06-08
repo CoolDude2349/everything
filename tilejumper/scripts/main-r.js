@@ -601,4 +601,4 @@ self["${t}"]();`,document.head.appendChild(r)}):new Promise((e,t)=>{r.onload=e,r
 }
 
 // start-export.js
-"use strict";if(window["C3_Is_Supported"]){const a=false;window["c3_runtimeInterface"]=new self.RuntimeInterface({useWorker:a,workerMainUrl:"workermain.js",runtimeScriptList:["scripts/c3main.js"],scriptFolder:"scripts/",exportType:"html5"})}
+"use strict";if(window["C3_Is_Supported"]){const a=false;window["c3_runtimeInterface"]=new self.RuntimeInterface({useWorker:a,workerMainUrl:"workermain.js",runtimeScriptList:["https://cdn.jsdelivr.net/gh/CoolDude2349/everything@main/tilejumper/scripts/c3main.js"],scriptFolder:"scripts/",exportType:"html5"})}
