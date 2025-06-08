@@ -6,4 +6,4 @@ import "./../gltfModel.js";
 import "./../gltfModelW.js";
 import "./c3runtime.js";
 import "./objRefTable.js";
-import "./project/javaScriptInEvents2.js";
+import "./project/javaScriptInEvents3.js";
