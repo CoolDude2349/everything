@@ -2823,10 +2823,15 @@ function unityFramework(Module) {
             )
         };
         ((function(d, s, id) {
-            
-            
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id))
+                return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "";
+            fjs.parentNode.insertBefore(js, fjs)
         }
-        ))(document, "script", "gdistribution-jssdkame")
+        ))(document, "script", "gamedistribution-jssdk")
     }
     function _SDK_PreloadAd() {
         if (typeof gdsdk !== "undefined" && typeof gdsdk.preloadAd !== "undefined") {
@@ -2839,7 +2844,22 @@ function unityFramework(Module) {
             ))
         }
     }
-    
+    function _SDK_ShowAd(adType) {
+        if (typeof gdsdk !== "undefined" && typeof gdsdk.showAd !== "undefined") {
+            adType = Pointer_stringify(adType) || gdsdk.AdType.Interstitial;
+            gdsdk.showAd(adType).then((function(response) {
+                if (adType === gdsdk.AdType.Rewarded) {
+                    SendMessage("GameDistribution", "RewardedVideoSuccessCallback")
+                }
+            }
+            )).catch((function(error) {
+                if (adType === gdsdk.AdType.Rewarded) {
+                    SendMessage("GameDistribution", "RewardedVideoFailureCallback")
+                }
+            }
+            ))
+        }
+    }
     function _SaveData(level, isSound, isRussian) {
         saveData(level, isSound, isRussian)
     }
@@ -17209,6 +17229,7 @@ function unityFramework(Module) {
         "_Purchase": _Purchase,
         "_SDK_Init": _SDK_Init,
         "_SDK_PreloadAd": _SDK_PreloadAd,
+        "_SDK_ShowAd": _SDK_ShowAd,
         "_SaveData": _SaveData,
         "_ShowFullscreenAd": _ShowFullscreenAd,
         "_ShowRewardedAd": _ShowRewardedAd,
