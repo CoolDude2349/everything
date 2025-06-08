@@ -4485,7 +4485,7 @@
                     }, enumerable: !1, configurable: !0
                 }), Object.defineProperty(e.prototype, "environment", {
                     get: function () {
-                        return "disabled"
+                        return "enabled"
                     }, enumerable: !1, configurable: !0
                 }), Object.defineProperty(e.prototype, "isQaTool", {
                     get: function () {
