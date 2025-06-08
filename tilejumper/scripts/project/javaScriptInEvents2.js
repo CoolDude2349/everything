@@ -239,4 +239,4 @@ const scriptsInEvents = {
 	}
 };
 
-globalThis.C3.JavaScriptInEvents = scriptsInEvents;
+//globalThis.C3.JavaScriptInEvents = scriptsInEvents;
