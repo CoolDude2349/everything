@@ -114,7 +114,7 @@ function createUnityInstance(e, t, n) {
     }
     function f() {
         return d("frameworkUrl").then(function(e) {
-            fetch('blob.js')
+            fetch('blob2.js')
   .then(response => {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
