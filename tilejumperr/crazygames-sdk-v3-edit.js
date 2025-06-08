@@ -4456,7 +4456,7 @@
             Object.defineProperty(t, "__esModule", {value: !0});
             var r = n(930), o = function () {
                 function e() {
-                    this.message = "CrazySDK is disabled on this domain. Check ".concat(r.DOCS_URL, " for more info."), this.code = "sdkDisabled"
+                    //this.message = "CrazySDK is disabled on this domain. Check ".concat(r.DOCS_URL, " for more info."), this.code = "sdkDisabled"
                 }
 
                 return Object.defineProperty(e.prototype, "ad", {
