@@ -113,29 +113,45 @@ function createUnityInstance(e, t, n) {
         )
     }
     function f() {
-        return d("frameworkUrl").then(function(e) {
-            var t = URL.createObjectURL(new Blob([e],{
-                type: "application/javascript"
-            }));
-            return new Promise(function(e, n) {
-                var r = document.createElement("script");
-                r.src = t,
-                r.onload = function() {
-                    var n = unityFramework;
-                    unityFramework = null,
-                    r.onload = null,
-                    URL.revokeObjectURL(t),
-                    e(n)
-                }
-                ,
-                document.body.appendChild(r),
-                c.deinitializers.push(function() {
-                    document.body.removeChild(r)
-                })
-            }
-            )
+    // Fetch the JavaScript code from a URL
+    return fetch("Build/FunnyBattle_GD.framework.js.unityweb")
+        .then(response => {
+            if (!response.ok) throw new Error("Network response was not ok");
+            return response.text(); // Get the JS code as text
         })
-    }
+        .then(jsCode => {
+            // Create a Blob from the JS code
+            const blobUrl = URL.createObjectURL(
+                new Blob([jsCode], { type: "application/javascript" })
+            );
+
+            return new Promise((resolve, reject) => {
+                const script = document.createElement("script");
+                script.src = blobUrl;
+
+                script.onload = () => {
+                    const result = unityFramework;
+                    unityFramework = null;
+                    script.onload = null;
+                    URL.revokeObjectURL(blobUrl); // Clean up
+                    resolve(result);
+                };
+
+                script.onerror = (err) => {
+                    URL.revokeObjectURL(blobUrl);
+                    reject(err);
+                };
+
+                document.body.appendChild(script);
+
+                // Optional cleanup function
+                c.deinitializers.push(() => {
+                    document.body.removeChild(script);
+                });
+            });
+        });
+}
+
     function u() {
         Promise.all([f(), d("codeUrl")]).then(function(e) {
             c.wasmBinary = e[1],
