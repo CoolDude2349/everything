@@ -91,7 +91,7 @@ const scriptsInEvents = {
 		
 		const sdkElem = document.createElement("script");
 		sdkElem.type = "text/javascript";
-		sdkElem.src = "Construct3CrazySDK-v3-edit.js";
+		sdkElem.src = "Construct3CrazySDK-v3-edit2.js";
 		document.body.appendChild(sdkElem);
 		sdkElem.onload = function () {
 		    window.ConstructCrazySDK.init()
