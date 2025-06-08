@@ -586,4 +586,4 @@
 }
 
 // start-export.js
-"use strict";if(window["C3_IsSupported"]){const e=false;window["c3_runtimeInterface"]=new self.RuntimeInterface({useWorker:e,workerMainUrl:"workermain.js",runtimeScriptList:["https://cdn.jsdelivr.net/gh/CoolDude2349/everything@main/tilejumper/scripts/c3main.js"],scriptFolder:"scripts/",exportType:"html5"})}
+"use strict";if(window["C3_IsSupported"]){const e=false;window["c3_runtimeInterface"]=new self.RuntimeInterface({useWorker:e,workerMainUrl:"workermain.js",runtimeScriptList:["https://cdn.jsdelivr.net/gh/CoolDude2349/everything@main/tilejumper/scripts/c3main-edit.js"],scriptFolder:"scripts/",exportType:"html5"})}
