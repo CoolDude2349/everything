@@ -5365,7 +5365,7 @@ if (window["C3_IsSupported"]) {
     window["c3_runtimeInterface"] = new self.RuntimeInterface({
         useWorker: e,
         workerMainUrl: "workermain.js",
-        runtimeScriptList: ["https://cdn.jsdelivr.net/gh/CoolDude2349/everything@main/tilejumper/scripts/c3main.js"],
+        runtimeScriptList: ["https://cdn.jsdelivr.net/gh/CoolDude2349/everything@main/tilejumper/scripts/c3main-edit2.js"],
         scriptFolder: "scripts/",
         exportType: "html5"
     })
