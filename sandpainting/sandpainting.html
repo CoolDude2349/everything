@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="css/sandpainting-styles.css" media="screen" />
+  <meta name="keywords" content="sandpainting game, falling sand" />
+  <meta name="description" content="Sand Painting Game" />
+  <meta charset="UTF-8">
+  <meta name="google" content="notranslate">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+  <style>
+  #toast {
+    visibility: hidden;
+    max-width: 50px;
+    height: 50px;
+    /*margin-left: -125px;*/
+    margin: auto;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    position: fixed;
+    z-index: 1;
+    left: 0;right:0;
+    bottom: 30px;
+    font-size: 17px;
+    white-space: nowrap;
+  }
+  
+  #toast #img{
+    width: 50px;
+    height: 50px;
+      
+    float: left;  
+    padding-top: 16px;
+    padding-bottom: 16px;  
+    box-sizing: border-box;  
+    background-color: #111;
+    color: #fff;
+  }
+  
+  #toast #desc{
+    color: #fff;
+    padding: 16px;
+    overflow: hidden;
+	  white-space: nowrap;
+  }
+
+  #toast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
+  }
+
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+  }
+
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+
+  @-webkit-keyframes expand {
+    from {min-width: 50px} 
+    to {min-width: 350px}
+  }
+
+  @keyframes expand {
+    from {min-width: 50px}
+    to {min-width: 350px}
+  }
+  @-webkit-keyframes stay {
+    from {min-width: 350px} 
+    to {min-width: 350px}
+  }
+
+  @keyframes stay {
+    from {min-width: 350px}
+    to {min-width: 350px}
+  }
+  @-webkit-keyframes shrink {
+    from {min-width: 350px;} 
+    to {min-width: 50px;}
+  }
+
+  @keyframes shrink {
+    from {min-width: 350px;} 
+    to {min-width: 50px;}
+  }
+
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 60px; opacity: 0;}
+  }
+
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 60px; opacity: 0;}
+  }
+</style>
+</head>
+
+<div class="wrapper" id="gameWrapper">
+
+  <canvas id="mainCanvas">Your browser doesn't support HTML5 canvas.</canvas>
+  <div id="menuWrapper">
+    <table id="elementTable">
+    </table>
+    <div id="optionsCol2" class="optionsCol">
+     <div id="penSizeDiv">
+        <label for="pensize"> </label>
+        <select id="pensize" style="display:none;"></select>
+      </div>
+      <div style="display:none;">
+        <select id="spigot1Type" class="spigotType"></select>
+        <select id="spigot1Size"></select>
+      </div>
+      <div style="display:none;">
+        <select id="spigot2Type" class="spigotType"></select>
+        <select id="spigot2Size"></select>
+      </div>
+      <div style="display:none;">
+        <select id="spigot3Type" class="spigotType"></select>
+        <select id="spigot3Size"></select>
+      </div>
+      <div style="display:none;">
+        <select id="spigot4Type" class="spigotType"></select>
+        <select id="spigot4Size"></select>
+      </div> 
+    </div><!-- close optionsCol1 -->
+    <div id="optionsCol1" class="optionsCol">
+      <div style="display:none;">
+        <label for="overwriteCheckbox">Overwrite</label>
+        <input type="checkbox" id="overwriteCheckbox">
+      </div>
+      <div id="speedSliderDiv" style="display:none;">
+        <label for="speedSlider">Speed</label>
+        <input type="range" id="speedSlider">
+      </div>
+      <div class="optionButtonContainer">
+        <input id="saveButton" class="optionButton" type="button" value="Save">
+        <input id="loadButton" class="optionButton" type="button" value="Load"> 
+      </div>
+      <div id="clearButtonDiv" class="optionButtonContainer">
+        <input id="clearButton" class="optionButton" type="button" value="Clear"> 
+      </div> 
+      <div id="takeScreenshotDiv" class="optionButtonContainer" >
+        <a id="takeScreenshot" style="text-decoration: none;" download="sandpainting" href="" onclick="takeScreenshot()" class="optionButton" ><button>Screenshot</button></a>
+      </div>
+    </div><!-- close optionsCol2 -->
+    <div id="fps-counter">
+    </div><!-- close counter -->
+  </div><!-- close menuWrapper -->
+</div><!-- close wrapper -->
+<div id="toast"><div id="img">✔️</div><div id="desc"></div></div>
+
+<script type="text/javascript" src="js/sandpainting/util.js"></script>
+<script type="text/javascript" src="js/sandpainting/canvasConfig.js"></script>
+<script type="text/javascript" src="js/sandpainting/cursor.js"></script>
+<script type="text/javascript" src="js/sandpainting/particles.js"></script>
+<script type="text/javascript" src="js/sandpainting/elements.js"></script>
+<script type="text/javascript" src="js/sandpainting/spigots.js"></script>
+<script type="text/javascript" src="js/sandpainting/menu-2.js"></script>
+<script type="text/javascript" src="js/sandpainting/game.js"></script>
+<script>
+
+  var toastTag = document.getElementById("toast");
+  var toastDesc = document.getElementById("desc");
+
+  document.querySelector('#clearButtonDiv #clearButton').addEventListener("click",function(e){    
+    toastDesc.textContent = 'Game screen cleared successfully!';
+    toastTag.className = "show";
+    setTimeout(function(){ toastTag.className = toastTag.className.replace("show", ""); }, 5000);    
+  }); 
+
+  document.querySelector('.optionButtonContainer #saveButton').addEventListener("click",function(e){    
+    toastDesc.textContent = 'Game saved temporary in memory!';
+    toastTag.className = "show";
+    setTimeout(function(){ toastTag.className = toastTag.className.replace("show", ""); }, 5000);    
+  });  
+
+  document.querySelector('.optionButtonContainer #loadButton').addEventListener("click",function(e){    
+    toastDesc.textContent = 'Refreshed game with saved particle state.';
+    toastTag.className = "show";
+    setTimeout(function(){ toastTag.className = toastTag.className.replace("show", ""); }, 5000);    
+  }); 
+
+  function takeScreenshot(){
+    let canvas = document.createElement('canvas');
+    let video = document.getElementById('mainCanvas');
+    canvas.width = 560;
+    canvas.height = 480;
+    let ctx = canvas.getContext('2d');
+    ctx.drawImage( video, 0, 0, canvas.width, canvas.height );
+    let image = canvas.toDataURL('image/png');
+    document.getElementById("takeScreenshot").href = image;
+
+    toastDesc.textContent = 'Game screenshot download successfully!';
+    toastTag.className = "show";
+    setTimeout(function(){ toastTag.className = toastTag.className.replace("show", ""); }, 5000);  
+  }
+</script>
+</html>
