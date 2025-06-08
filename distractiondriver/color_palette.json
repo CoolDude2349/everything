@@ -1,0 +1,206 @@
+{
+    "c2array": true,
+    "size": [
+        2,
+        32,
+        1
+    ],
+    "data": [
+        [
+            [
+                "rgbEx255(190, 74, 47)"
+            ],
+            [
+                "rgbEx255(215, 118, 67)"
+            ],
+            [
+                "rgbEx255(234, 212, 170)"
+            ],
+            [
+                "rgbEx255(228, 166, 114)"
+            ],
+            [
+                "rgbEx255(184, 111, 80)"
+            ],
+            [
+                "rgbEx255(115, 62, 57)"
+            ],
+            [
+                "rgbEx255(62, 39, 49)"
+            ],
+            [
+                "rgbEx255(162, 38, 51)"
+            ],
+            [
+                "rgbEx255(228, 59, 68)"
+            ],
+            [
+                "rgbEx255(247, 118, 34)"
+            ],
+            [
+                "rgbEx255(254, 174, 52)"
+            ],
+            [
+                "rgbEx255(255, 220, 0)"
+            ],
+            [
+                "rgbEx255(99, 199, 77)"
+            ],
+            [
+                "rgbEx255(62, 137, 72)"
+            ],
+            [
+                "rgbEx255(38, 92, 66)"
+            ],
+            [
+                "rgbEx255(25, 60, 62)"
+            ],
+            [
+                "rgbEx255(18, 112, 206)"
+            ],
+            [
+                "rgbEx255(0, 153, 219)"
+            ],
+            [
+                "rgbEx255(44, 232, 245)"
+            ],
+            [
+                "rgbEx255(255, 255, 255)"
+            ],
+            [
+                "rgbEx255(192, 203, 220)"
+            ],
+            [
+                "rgbEx255(139, 155, 180)"
+            ],
+            [
+                "rgbEx255(90, 105, 136)"
+            ],
+            [
+                "rgbEx255(58, 68, 102)"
+            ],
+            [
+                "rgbEx255(38, 43, 68)"
+            ],
+            [
+                "rgbEx255(24, 20, 37)"
+            ],
+            [
+                "rgbEx255(255, 0, 68)"
+            ],
+            [
+                "rgbEx255(185, 81, 194)"
+            ],
+            [
+                "rgbEx255(181, 80, 136)"
+            ],
+            [
+                "rgbEx255(246, 117, 122)"
+            ],
+            [
+                "rgbEx255(232, 183, 150)"
+            ],
+            [
+                "rgbEx255(194, 133, 105)"
+            ]
+        ],
+        [
+            [
+                "Rosso mattone"
+            ],
+            [
+                "Arancione bruciato"
+            ],
+            [
+                "Beige chiaro"
+            ],
+            [
+                "Beige dorato"
+            ],
+            [
+                "Marrone rossastro"
+            ],
+            [
+                "Marrone scuro"
+            ],
+            [
+                "Viola brunastro"
+            ],
+            [
+                "Rosso scuro"
+            ],
+            [
+                "Rosso vivo"
+            ],
+            [
+                "Arancione acceso"
+            ],
+            [
+                "Giallo-arancio"
+            ],
+            [
+                "Giallo brillante"
+            ],
+            [
+                "Verde chiaro"
+            ],
+            [
+                "Verde erba"
+            ],
+            [
+                "Verde bosco"
+            ],
+            [
+                "Verde petrolio scuro"
+            ],
+            [
+                "Blu reale"
+            ],
+            [
+                "Azzurro brillante"
+            ],
+            [
+                "Ciano acceso"
+            ],
+            [
+                "Bianco"
+            ],
+            [
+                "Grigio chiaro"
+            ],
+            [
+                "Grigio azzurrato"
+            ],
+            [
+                "Blu-grigio"
+            ],
+            [
+                "Blu notte"
+            ],
+            [
+                "Blu-nero"
+            ],
+            [
+                "Viola scurissimo"
+            ],
+            [
+                "Rosso neon"
+            ],
+            [
+                "Viola"
+            ],
+            [
+                "Magenta tenue"
+            ],
+            [
+                "Rosa salmone"
+            ],
+            [
+                "Beige rosato"
+            ],
+            [
+                "Marrone sabbia"
+            ]
+        ]
+    ]
+}

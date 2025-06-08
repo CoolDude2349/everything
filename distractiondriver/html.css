@@ -1,0 +1,14 @@
+.button{
+	opacity:0;
+}
+
+
+.input-text{
+	background: none;
+	border:none;
+	outline:none;
+	color: #5d26c6;
+	font-family: "RussoOne-Regular";	
+	font-size:3vh;
+
+}
