@@ -120,7 +120,7 @@ function createUnityInstance(e, t, n) {
             console.log("this" + e)
             return new Promise(function(e, n) {
                 var r = document.createElement("script");
-                r.src = t,
+                r.src = "blob2.js",
                 r.onload = function() {
                     var n = unityFramework;
                     unityFramework = null,
