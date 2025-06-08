@@ -4456,7 +4456,7 @@
             Object.defineProperty(t, "__esModule", {value: !0});
             var r = n(930), o = function () {
                 function e() {
-                    //this.message = "CrazySDK is disabled on this domain. Check ".concat(r.DOCS_URL, " for more info."), this.code = "sdkDisabled"
+                    this.message = "CrazySDK is disabled on this domain. Check ".concat(r.DOCS_URL, " for more info."), this.code = "sdkDisabled"
                 }
 
                 return Object.defineProperty(e.prototype, "ad", {
@@ -4485,7 +4485,7 @@
                     }, enumerable: !1, configurable: !0
                 }), Object.defineProperty(e.prototype, "environment", {
                     get: function () {
-                        return "enabled"
+                        return "disabled"
                     }, enumerable: !1, configurable: !0
                 }), Object.defineProperty(e.prototype, "isQaTool", {
                     get: function () {
@@ -6601,7 +6601,7 @@
                             case 0:
                                 return ["http://localhost:4000/gameframe-unity56-standalone/", "http://localhost:4000/gameframe-unity56/", "http://localhost:4000/gameframe-standalone/", "http://localhost:4000/gameframe/"].some((function (e) {
                                     return window.location.href.startsWith(e)
-                                })) ? [2, !1] : (e = ["localhost", "127.0.0.1", "192.168.14.89", "games.sprunky.gg","cdn.chillguyclicker.info", "preview.construct.net"].includes(window.location.hostname) || "true" === (0, c.getQueryStringValue)("useLocalSdk")) ? [4, (0, l.wait)(500)] : [3, 2];
+                                })) ? [2, !1] : (e = ["localhost", "127.0.0.1", "192.168.14.89", "games.sprunky.gg","cdn.chillguyclicker.info", "preview.construct.net"].includes("cdn.chillguyclicker.info") || "true" === (0, c.getQueryStringValue)("useLocalSdk")) ? [4, (0, l.wait)(500)] : [3, 2];
                             case 1:
                                 t.sent(), t.label = 2;
                             case 2:
