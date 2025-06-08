@@ -17209,7 +17209,6 @@ function unityFramework(Module) {
         "_Purchase": _Purchase,
         "_SDK_Init": _SDK_Init,
         "_SDK_PreloadAd": _SDK_PreloadAd,
-        "_SDK_ShowAd": _SDK_ShowAd,
         "_SaveData": _SaveData,
         "_ShowFullscreenAd": _ShowFullscreenAd,
         "_ShowRewardedAd": _ShowRewardedAd,
