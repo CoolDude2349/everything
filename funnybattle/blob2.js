@@ -2823,15 +2823,10 @@ function unityFramework(Module) {
             )
         };
         ((function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id))
-                return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "";
-            fjs.parentNode.insertBefore(js, fjs)
+            
+            
         }
-        ))(document, "script", "gamedistribution-jssdk")
+        ))(document, "script", "gdistribution-jssdkame")
     }
     function _SDK_PreloadAd() {
         if (typeof gdsdk !== "undefined" && typeof gdsdk.preloadAd !== "undefined") {
@@ -2844,22 +2839,7 @@ function unityFramework(Module) {
             ))
         }
     }
-    function _SDK_ShowAd(adType) {
-        if (typeof gdsdk !== "undefined" && typeof gdsdk.showAd !== "undefined") {
-            adType = Pointer_stringify(adType) || gdsdk.AdType.Interstitial;
-            gdsdk.showAd(adType).then((function(response) {
-                if (adType === gdsdk.AdType.Rewarded) {
-                    SendMessage("GameDistribution", "RewardedVideoSuccessCallback")
-                }
-            }
-            )).catch((function(error) {
-                if (adType === gdsdk.AdType.Rewarded) {
-                    SendMessage("GameDistribution", "RewardedVideoFailureCallback")
-                }
-            }
-            ))
-        }
-    }
+    
     function _SaveData(level, isSound, isRussian) {
         saveData(level, isSound, isRussian)
     }
