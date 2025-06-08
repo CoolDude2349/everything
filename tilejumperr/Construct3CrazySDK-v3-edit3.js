@@ -9,7 +9,7 @@ window.ConstructCrazySDK = {
     return new Promise((resolve, reject) => {
       const sdkScript = document.createElement('script');
       sdkScript.type = 'text/javascript';
-      sdkScript.src = 'crazygames-sdk-v3-edit2.js';
+      sdkScript.src = 'crazygames-sdk-v3-edit3.js';
       sdkScript.onload = function () {
         window.CrazyGames.SDK.init({
           wrapper: {
