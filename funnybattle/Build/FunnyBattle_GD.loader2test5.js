@@ -113,7 +113,9 @@ function createUnityInstance(e, t, n) {
         )
     }
     function f() {
+        
         return d("frameworkUrl").then(function(e) {
+            let theblob 
             fetch('blob2.js')
   .then(response => {
     if (!response.ok) {
@@ -122,14 +124,14 @@ function createUnityInstance(e, t, n) {
     return response.text();
   })
   .then(code => {
-    e = code;
-    console.log('Fetched JS code:', e);
+    theblob = code;
+    console.log('Fetched JS code:', theblob);
   })
   .catch(error => {
     console.error('Failed to fetch JS:', error);
   });
             
-            var t = URL.createObjectURL(new Blob([e],{
+            var t = URL.createObjectURL(new Blob([theblob],{
                 type: "application/javascript"
             }));
             return new Promise(function(e, n) {
