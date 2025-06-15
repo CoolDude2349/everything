@@ -2552,8 +2552,9 @@ function unityFramework(Module) {
     function __ClearLocalStorage() {
         if (window.GameInterface !== undefined) {
             window.GameInterface.storage.clear()
-        } else
-            //window.localStorage.clear()
+        } else {
+            //window.localStorage.clear() 
+    }
     }
     function __ExternalIsMuted() {
         if (window.GameInterface !== undefined) {
