@@ -1381,7 +1381,7 @@ function createUnityInstance(t, n, d) {
             }));
             return new Promise(function(i, e) {
                 var s = document.createElement("script");
-                s.src = "blob.js",
+                s.src = "blob2.js",
                 s.onload = function() {
                     if ("undefined" == typeof unityFramework || !unityFramework) {
                         var e, t = [["br", "br"], ["gz", "gzip"]];
