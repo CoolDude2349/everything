@@ -2639,8 +2639,9 @@ function unityFramework(Module) {
     function __RemoveLocalStorageItem(key) {
         if (window.GameInterface !== undefined) {
             window.GameInterface.storage.removeItem(UTF8ToString(key))
-        } else
+        } else {
             //window.localStorage.removeItem(UTF8ToString(key))
+    }
     }
     function __SendProgress(value) {
         if (window.GameInterface !== undefined) {
@@ -2655,8 +2656,9 @@ function unityFramework(Module) {
     function __SetLocalStorageItem(key, value) {
         if (window.GameInterface !== undefined) {
             window.GameInterface.storage.setItem(UTF8ToString(key), UTF8ToString(value))
-        } else
+        } else {
             //window.localStorage.setItem(UTF8ToString(key), UTF8ToString(value))
+    }
     }
     function __SetOnGoToHomeHandler(callback) {
         if (window.GameInterface !== undefined) {
