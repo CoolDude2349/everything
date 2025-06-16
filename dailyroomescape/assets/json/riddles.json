@@ -1,0 +1,639 @@
+[
+	{
+		"a": "Teeth",
+		"q": [	"Thirty white horses on a red hill",
+				"First they champ",
+				"Then they stamp",
+				"Then they stand still" ]
+	},
+	{
+		"a": "Snail",
+		"q": [	"If a man carried my burden",
+				"He would break his back",
+				"I am not rich",
+				"But leave silver in my track" ]
+	},
+	{
+		"a": "Death",
+		"q": [	"Some try to hide, some try to cheat",
+				"Time will show, we always will meet",
+				"Try as you might, to guess my name",
+				"I promise you'll know, when you I do claim" ]
+	},
+	{
+		"a": "Water",
+		"q": [	"Three lives have I",
+				"Gentle enough to soothe the skin",
+				"Light enough to caress the sky",
+				"Hard enough to crack rocks" ]
+	},
+	{
+		"a": "Pearl",
+		"q": [	"Lovely and round",
+				"I shine with pale light",
+				"Grown in the darkness",
+				"A lady's delight" ]
+	},
+	{
+		"a": "Music",
+		"q": [	"At the sound of me, men may dream",
+				"Or stamp their feet",
+				"At the sound of me, women may laugh",
+				"Or sometimes weep" ]
+	},
+	{
+		"a": "Daisy",
+		"q": [	"My face is yellow",
+				"My hair is white",
+				"My body is green",
+				"What am I?" ]
+	},
+	{
+		"a": "Human",
+		"q": [	"It walks on four legs in the morning",
+				"Two legs at noon",
+				"Three legs in the evening",
+				"What is it?" ]
+	},
+	{
+		"a": "River",
+		"q": [	"What always runs but never walks",
+				"Often murmurs but never talks",
+				"Has a bed but never sleeps",
+				"Has a mouth but never eats?" ]
+	},
+	{
+		"a": "Stars",
+		"q": [	"At night they come",
+				"Without being fetched",
+				"By day they are lost",
+				"Without being stolen" ]
+	},
+	{
+		"a": "Coffin",
+		"q": [	"The one who makes it, sells it",
+				"The one who buys it, never uses it",
+				"The one that uses it never knows that he's using it",
+				"What is it?" ]
+	},
+	{
+		"a": "Penny",
+		"q": [	"What has a head",
+				"A tail",
+				"Is brown",
+				"And has no legs?" ]
+	},
+	{
+		"a": "Corn",
+		"q": [	"You throw away the outside",
+				"And cook the inside",
+				"Then you eat the outside",
+				"And throw away the inside" ]
+	},
+	{
+		"a": "Fire",
+		"q": [	"I am always hungry",
+				"I must always be fed",
+				"The finger I touch",
+				"Will soon turn red" ]
+	},
+	{
+		"a": "Few",
+		"q": [	"I know a word",
+				"Of letters three",
+				"Add two",
+				"And fewer there will be" ]
+	},
+	{
+		"a": "Frog",
+		"q": [	"I have four legs",
+				"But no tail",
+				"Usually I am heard",
+				"Only at night" ]
+	},
+	{
+		"a": "Wine",
+		"q": [	"When young, I am sweet in the sun",
+				"When middle-aged, I make you happy",
+				"When old, I am valued more than ever",
+				"What am I?" ]
+	},
+	{
+		"a": "Wind",
+		"q": [	"All about, but cannot be seen",
+				"Can be captured, cannot be held",
+				"No throat, but can be heard",
+				"What am I?" ]
+	},
+	{
+		"a": "Heart",
+		"q": [	"If you break me, I do not stop working",
+				"If you touch me, I may be snared",
+				"If you lose me, nothing will matter",
+				"What am I?" ]
+	},
+	{
+		"a": "Time",
+		"q": [	"Until I am measured",
+				"I am not known",
+				"Yet how you miss me",
+				"When I have flown" ]
+	},
+	{
+		"a": "Gold",
+		"q": [	"I drive men mad",
+				"For love of me",
+				"Easily beaten",
+				"Never free" ]
+	},
+	{
+		"a": "Shadow",
+		"q": [	"Each morning I appear to lie at your feet",
+				"All day I will follow",
+				"No matter how fast you run",
+				"Yet I nearly perish in the midday sun" ]
+	},
+	{
+		"a": "Candle",
+		"q": [	"My life can be measured in hours",
+				"I serve by being devoured",
+				"Thin, I am quick",
+				"Fat, I am slow" ]
+	},
+	{
+		"a": "Icicle",
+		"q": [	"Glittering points",
+				"That downward thrust",
+				"Sparkling spears",
+				"That never rust" ]
+	},
+	{
+		"a": "Echo",
+		"q": [	"You heard me before",
+				"Yet you hear me again",
+				"Then I die",
+				"Until you call me again" ]
+	},
+	{
+		"a": "Sand",
+		"q": [	"I build up castles",
+				"I tear down mountains",
+				"I make some men blind",
+				"I help others to see" ]
+	},
+	{
+		"a": "Hole",
+		"q": [	"It cannot be seen",
+				"It weighs nothing",
+				"When put into a barrel",
+				"It makes it lighter" ]
+	},
+	{
+		"a": "Teapot",
+		"q": [	"I start with a T",
+				"I end with a T",
+				"I have T in me",
+				"What am I?" ]
+	},
+	{
+		"a": "Egg",
+		"q": [	"A box without hinges",
+				"Lock or key",
+				"Yet golden treasure",
+				"Lies within" ]
+	},
+	{
+		"a": "Ton",
+		"q": [	"Forward",
+				"I'm heavy",
+				"Backwards",
+				"I'm not" ]
+	},
+	{
+		"a": "Piano",
+		"q": [	"I am a box",
+				"That holds keys",
+				"Without locks",
+				"That can unlock your soul" ]
+	},
+	{
+		"a": "Smile",
+		"q": [	"A mile from end to end",
+				"Yet as close to as a friend",
+				"A precious commodity",
+				"Freely given" ]
+	},
+	{
+		"a": "Sponge",
+		"q": [	"I'm full of holes",
+				"Yet I'm full",
+				"Of water",
+				"What am I?" ]
+	},
+	{
+		"a": "Shirt",
+		"q": [	"I have a neck",
+				"But no head",
+				"I have two arms",
+				"But no hands" ]
+	},
+	{
+		"a": "Fish",
+		"q": [	"Alive without breath",
+				"As cold as death",
+				"Clad in mail never clinking",
+				"Never thirsty, ever drinking" ]
+	},
+	{
+		"a": "Wheel",
+		"q": [	"I go around in circles",
+				"But always straight ahead",
+				"Never complain",
+				"No matter where I am led" ]
+	},
+	{
+		"a": "Vowels",
+		"q": [	"We are five little objects",
+				"Of an everyday sort",
+				"You will find us all",
+				"In the ladies' court" ]
+	},
+	{
+		"a": "Ship",
+		"q": [	"Weight in my belly",
+				"Trees on my back",
+				"Nails in my ribs",
+				"Feet I do lack" ]
+	},
+	{
+		"a": "Ocean",
+		"q": [	"I look flat",
+				"But I am deep",
+				"Food I offer",
+				"But lives I keep" ]
+	},
+	{
+		"a": "Doll",
+		"q": [	"Hands she has but does not hold",
+				"Teeth she has but does not bite",
+				"Feet she has but they are cold",
+				"Eyes she has but without sight" ]
+	},
+	{
+		"a": "Choice",
+		"q": [	"Given one",
+				"You'll have",
+				"Either two",
+				"Or none" ]
+	},
+	{
+		"a": "Broom",
+		"q": [	"I have a hundred legs",
+				"But cannot stand",
+				"A long neck",
+				"That you hold in your hand" ]
+	},
+	{
+		"a": "Fear",
+		"q": [	"I make your hands sweat",
+				"And your heart grow cold",
+				"I visit the weak",
+				"But seldom the bold" ]
+	},
+	{
+		"a": "Moon",
+		"q": [	"I am the hole in the night",
+				"The ever watchful eye",
+				"I return in a cycle",
+				"To enlighten the sky" ]
+	},
+	{
+		"a": "Mask",
+		"q": [	"Tool of thief, toy of queen",
+				"Always used to be unseen",
+				"Sign of joy, sign of sorrow",
+				"Giving all likeness borrowed" ]
+	},
+	{
+		"a": "Dust",
+		"q": [	"People are hired to get rid of me",
+				"I'm often hiding under your bed",
+				"In time I'll always return you see",
+				"Bite me and you're surely dead" ]
+	},
+	{
+		"a": "Map",
+		"q": [	"I have a forest but no trees",
+				"I have cities but no people",
+				"I have rivers but no water",
+				"What am I?" ]
+	},
+	{
+		"a": "Bat",
+		"q": [	"When I'm metal or wood",
+				"I help you get home",
+				"When I'm flesh and I'm blood",
+				"In the darkness I roam" ]
+	},
+	{
+		"a": "Breath",
+		"q": [	"As light as a feather",
+				"But you can't hold it",
+				"Forever",
+				"What am I?" ]
+	},
+	{
+		"a": "Match",
+		"q": [	"Scratch my head",
+				"What once was red",
+				"Is black instead",
+				"What am I?" ]
+	},
+	{
+		"a": "Dark",
+		"q": [	"It cannot be seen, cannot be felt",
+				"Cannot be heard, cannot be smelt",
+				"It lies behind stars and under hills",
+				"And empty holes it fills" ]
+	},
+	{
+		"a": "Sound",
+		"q": [	"All about, but cannot be seen",
+				"Can be captured",
+				"Cannot be held",
+				"No throat, but can be heard" ]
+	},
+	{
+		"a": "Cherry",
+		"q": [	"A red cap",
+				"On my head",
+				"A stone",
+				"In my throat" ]
+	},
+	{
+		"a": "Anchor",
+		"q": [	"When you need me",
+				"You throw me away",
+				"When you're done with me",
+				"You bring me back" ]
+	},
+	{
+		"a": "Words",
+		"q": [	"We hurt without moving",
+				"We poison without touching",
+				"We bear the truth and the lies",
+				"We are not to be judged by our size" ]
+	},
+	{
+		"a": "Dentist",
+		"q": [	"I build bridges of silver",
+				"And make crowns of gold",
+				"I polish dirty pearls",
+				"When they get too old" ]
+	},
+	{
+		"a": "Onion",
+		"q": [	"You use a knife",
+				"To slice my head",
+				"And weep beside me ",
+				"When I am dead" ]
+	},
+	{
+		"a": "Mirror",
+		"q": [	"Look in my face",
+				"I am somebody",
+				"Look in my back",
+				"I am nobody" ]
+	},
+	{
+		"a": "Pawns",
+		"q": [	"Eight of us go forth",
+				"Not back",
+				"To protect our king",
+				"From an attack" ]
+	},
+	{
+		"a": "Tongue",
+		"q": [	"Often held but never touched",
+				"Always wet but never rusts",
+				"Often bites but seldom bit",
+				"To use me well you must have wit" ]
+	},
+	{
+		"a": "Lie",
+		"q": [	"I'm sometimes white",
+				"And always wrong",
+				"I can break a heart",
+				"And hurt the strong" ]
+	},
+	{
+		"a": "Lock",
+		"q": [	"A dagger thrust at my own heart",
+				"Dictates the way I'm swayed",
+				"Left I stand, and right I yield",
+				"To the twisting of the blade" ]
+	},
+	{
+		"a": "Teabag",
+		"q": [	"Late afternoons I often bathe",
+				"I'll soak in water piping hot",
+				"My essence goes through my see through clothes",
+				"Used up am I, I've gone to pot" ]
+	},
+	{
+		"a": "Path",
+		"q": [	"From house to house I go",
+				"Sometimes narrow, sometimes wide",
+				"And whether there's rain or snow",
+				"I always stay outside" ]
+	},
+	{
+		"a": "Gloves",
+		"q": [	"Four fingers",
+				"and a thumb",
+				"Yet flesh and blood",
+				"I have none" ]
+	},
+	{
+		"a": "Hearse",
+		"q": [	"I'm sometimes white",
+				"But usually black black",
+				"I take you there",
+				"But never bring you back" ]
+	},
+	{
+		"a": "Yarn",
+		"q": [	"I'm found in socks",
+				"Scarves and mittens",
+				"I'm found in the paws",
+				"Of playful kittens" ]
+	},
+	{
+		"a": "Wind",
+		"q": [	"Voiceless it cries",
+				"Wingless flutters",
+				"Toothless bites",
+				"Mouthless mutters" ]
+	},
+	{
+		"a": "Key",
+		"q": [	"What force and strength cannot get through",
+				"I with a gentle touch can do",
+				"And many in the street would stand",
+				"Were I not a friend at hand" ]
+	},
+	{
+		"a": "News",
+		"q": [	"I can be written",
+				"I can be spoken",
+				"I can be exposed",
+				"I can be broken" ]
+	},
+	{
+		"a": "Sleep",
+		"q": [	"I weaken all people",
+				"For hours each day",
+				"I show you strange visions",
+				"While you are away" ]
+	},
+	{
+		"a": "Time",
+		"q": [	"I wear you down",
+				"Yet you'll mourn me once I fly",
+				"You can kill me",
+				"But I will never die" ]
+	},
+	{
+		"a": "Vacuum",
+		"q": [	"I'm named after nothing",
+				"Though I'm awfully clamorous",
+				"And when I'm not working",
+				"Your house is less glamorous" ]
+	},
+	{
+		"a": "Glass",
+		"q": [	"Though liquid in nature",
+				"Don't push me too far",
+				"For then I will break",
+				"And the damage may scar" ]
+	},
+	{
+		"a": "Needle",
+		"q": [	"A slender body",
+				"A tiny eye",
+				"No matter what happens",
+				"I never cry" ]
+	},
+	{
+		"a": "Button",
+		"q": [	"Flat as a leaf",
+				"Round as a ring",
+				"Has two eyes",
+				"Can't see a thing" ]
+	},
+	{
+		"a": "Stapler",
+		"q": [	"I bring my victims together",
+				"Each time I bite",
+				"But they'll come undone",
+				"If you pull just right" ]
+	},
+	{
+		"a": "Silence",
+		"q": [	"No sooner",
+				"Spoken",
+				"Than",
+				"Broken" ]
+	},
+	{
+		"a": "Joke",
+		"q": [	"I can be cracked",
+				"I can be made",
+				"I can be told",
+				"I can be played" ]
+	},
+	{
+		"a": "Violin",
+		"q": [	"My voice is tender",
+				"My waist is slender",
+				"I must have my bow",
+				"To share what I know" ]
+	},
+	{
+		"a": "Xray",
+		"q": [	"You can't see me",
+				"But I can see you",
+				"To be more specific",
+				"I see through" ]
+	},
+	{
+		"a": "Comb",
+		"q": [	"I have many teeth",
+				"And sometimes they're fine",
+				"First I'm by your head",
+				"Then I'm down your spine" ]
+	},
+	{
+		"a": "Air",
+		"q": [	"I can be thin",
+				"But not fat",
+				"Some use a lot of me",
+				"Especially if they like to chat" ]
+	},
+	{
+		"a": "Zipper",
+		"q": [	"Soldiers line up spaced with pride",
+				"Two long rows lined side by side",
+				"One sole unit can decide",
+				"If the rows will unite or divide" ]
+	},
+	{
+		"a": "Dark",
+		"q": [	"The more you have",
+				"The less you see",
+				"Light destroys me",
+				"What might I be?" ]
+	},
+	{
+		"a": "Milk",
+		"q": [	"You can spin",
+				"Wheel and twist",
+				"But I can turn",
+				"without moving a bit" ]
+	},
+	{
+		"a": "Bell",
+		"q": [	"You hear it speak",
+				"For it has a tongue",
+				"But it cannot breathe",
+				"For it has not a lung" ]
+	},
+	{
+		"a": "Name",
+		"q": [	"I belong to you",
+				"But others use it",
+				"More than you do",
+				"What am I?" ]
+	},
+	{
+		"a": "Clock",
+		"q": [	"I have a face",
+				"Two arms",
+				"And two hands",
+				"Yet I can not move" ]
+	},
+	{
+		"a": "Pupil",
+		"q": [	"Different lights",
+				"Do make me strange",
+				"Thus into different sizes",
+				"I will change" ]
+	},
+	{
+		"a": "Makeup",
+		"q": [	"I cover what's real",
+				"Hide what is true",
+				"But sometimes bring out",
+				"the courage in you" ]
+	}
+]
