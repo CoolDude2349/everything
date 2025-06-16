@@ -762,23 +762,7 @@
                     this.logger.log(`Prefetching ${e} ad`)
                 }
                 async requestAd(e, t) {
-                    if (this.requestInProgress)
-                        if (null == t ? void 0 : t.adError) {
-                            const e = "An ad request is already in progress";
-                            (0,
-                            o.wrapUserFn)(t.adError)(new i.AdError("other",e))
-                        } else
-                            (null == t ? void 0 : t.adFinished) && (0,
-                            o.wrapUserFn)(t.adFinished)();
-                    else
-                        this.adPlaying = !0,
-                        (null == t ? void 0 : t.adStarted) && (0,
-                        o.wrapUserFn)(t.adStarted)(),
-                        this.sdk.banner.activeBannersCount > 0 && this.sdk.banner.clearAllBanners(),
-                        await this.renderFakeAd(e),
-                        this.adPlaying = !1,
-                        (null == t ? void 0 : t.adFinished) && (0,
-                        o.wrapUserFn)(t.adFinished)()
+                   
                 }
                 async hasAdblock() {
                     return this.logger.log("Requesting adblock status (always false) (local)"),
