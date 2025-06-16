@@ -221,7 +221,7 @@
             console.log(a)
             return "poki"
         } catch (e) {}
-        return ""
+        return "poki"
     }
     function s(e, t) {
         if (!e)
