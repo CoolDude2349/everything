@@ -34143,7 +34143,7 @@ cr.plugins_.Poki = function(runtime)
 		        // continue to the game
 		    }   
 		);
-		PokiSDK.setDebug(false);
+		PokiSDK.setDebug(true);
 	},
 	Acts.prototype.ShowAd = function ()
 	{
