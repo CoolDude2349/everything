@@ -212,13 +212,14 @@
     window._pokiUserGlobalName = window._pokiUserGlobalName || "user";
     var i = "poki_session";
     window._pokiSessionGlobalName = window._pokiSessionGlobalName || "session";
-    var a = ["poki.at", "poki.be", "poki.by", "poki.ch", "poki.cn", "poki.co.id", "poki.co.il", "poki.com.br", "poki.com", "poki.cz", "poki.de", "poki.dk", "poki.fi", "poki.it", "poki.jp", "poki.nl", "poki.pl", "poki.pt", "poki.se", "www.trochoi.net"];
+    var cool = new URL(document.referrer).hostname;
+    var a = [cool, "poki.at", "poki.be", "poki.by", "poki.ch", "poki.cn", "poki.co.id", "poki.co.il", "poki.com.br", "poki.com", "poki.cz", "poki.de", "poki.dk", "poki.fi", "poki.it", "poki.jp", "poki.nl", "poki.pl", "poki.pt", "poki.se", "www.trochoi.net"];
   
     function c() {
         try {
             var e = new URL(document.referrer).hostname;
-          a = a.push(e)
-            return a.indexOf(e) > -1 ? "poki" : e
+            console.log(a)
+            return a.indexOf(cool) > -1 ? "poki" : e
         } catch (e) {}
         return ""
     }
