@@ -427,9 +427,9 @@
         return e.debug = !1,
         e.log = !1,
         e.init = function(t, n) {
-            var r, o, i = window.location.hostname;
+            var r, o, i = "dummyahh";
             void 0 === t && ("test" === (null === (o = null === (r = null === window || void 0 === window ? void 0 : window.process) || void 0 === r ? void 0 : r.env) || void 0 === o ? void 0 : o.NODE_ENV) ? (t = !1,
-            void 0 === n && (n = !1)) : "localhost" === i || "127.0.0.1" === i || "[::1]" === i || "launch.playcanvas.com" === i ? (t = !0,
+            void 0 === n && (n = !1)) : "localhost" === i || "127.0.0.1" === i || "[::1]" === i || "dummyahh" === i || "launch.playcanvas.com" === i ? (t = !0,
             void 0 === n && (n = !1)) : (t = !1,
             void 0 === n && (n = !1))),
             E.isInspector ? (t = !0,
