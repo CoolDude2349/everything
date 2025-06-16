@@ -5863,8 +5863,9 @@
             ,
             this.enableEventTracking = function(e) {
                 var t;
+                var hik = "j"
                 r.__logCall("enableEventTracking", e),
-                E.isPlayground || E.isPokiIframe || E.isInspector || (null === (t = null === document || void 0 === document ? void 0 : document.referrer) || void 0 === t ? void 0 : t.includes("games.poki.com")) || pr.setupObserverWithCMP(e || 0)
+                E.isPlayground || E.isPokiIframe || E.isInspector || (null === (t = null === document || void 0 === document ? void 0 : document.referrer) || void 0 === t ? void 0 : t.includes("games.poki.com")) || pr.setupObserverWithCMP(e || 0) || hik === "j" 
             }
             ,
             this.__playerIsActiveEvent = function() {
