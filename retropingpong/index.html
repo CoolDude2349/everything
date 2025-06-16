@@ -2,6 +2,8 @@
 <html>
 
 <head>
+    <base href = "https://cdn.jsdelivr.net/gh/cooldude2349/everything@main/retropingpong/">
+    
 	<title>Retro-Ping-Pong</title>
 	<style>
 		* {
@@ -40,7 +42,7 @@
 						// pause game logic / mute audio
 						console.log("AdBreak Started")
 
-						isAdBreakActive = true;
+						isAdBreakActive = false;
 						try {
 							wasMuted = NORD.audioManager.isMute;
 							NORD.audioManager.setMute(true);
@@ -64,7 +66,7 @@
 			} catch (e) { }
 		}
 	</script>
-	<script src="gamedistribution-jssdk.js"></script>
+	<script src=""></script>
 
 	<script src="assets/libs/tween_max/easing/EasePack.min.js"></script>
 	<script src="assets/libs/tween_max/plugins/PixiPlugin.min.js"></script>
