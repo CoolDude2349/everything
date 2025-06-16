@@ -212,7 +212,7 @@
     window._pokiUserGlobalName = window._pokiUserGlobalName || "user";
     var i = "poki_session";
     window._pokiSessionGlobalName = window._pokiSessionGlobalName || "session";
-    var cool = new URL(document.referrer).hostname;
+    var cool = "dummyahh";
     var a = [cool, "poki.at", "poki.be", "poki.by", "poki.ch", "poki.cn", "poki.co.id", "poki.co.il", "poki.com.br", "poki.com", "poki.cz", "poki.de", "poki.dk", "poki.fi", "poki.it", "poki.jp", "poki.nl", "poki.pl", "poki.pt", "poki.se", "www.trochoi.net"];
   
     function c() {
