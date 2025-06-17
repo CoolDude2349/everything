@@ -388,6 +388,7 @@ function createUnityInstance(t, n, l) {
             console.log("removed garbage")
             e = ""
         }
+        console.log("this is e: " + e)
         var n = function() {};
         return t && t.onProgress && (n = t.onProgress),
         fetch(e, t).then(function(e) {
