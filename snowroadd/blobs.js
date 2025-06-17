@@ -1042,7 +1042,7 @@ function unityFramework(Module) {
                 return;
             js = d.createElement(s);
             js.id = id;
-            js.src = "";
+            js.src = "//html5.api.gamedistribution.com/main.min.js";
             fjs.parentNode.insertBefore(js, fjs)
         }
         )(document, "script", "gamedistribution-jssdk")
@@ -3136,7 +3136,7 @@ function unityFramework(Module) {
                 return;
             js = d.createElement(s);
             js.id = id;
-            js.src = "";
+            js.src = "https://api.1games.io/gmsoftsdk_v3.js?v=3.2";
             fjs.parentNode.insertBefore(js, fjs)
         }
         )(document, "script", "gmsoft-jssdk");
@@ -3146,9 +3146,8 @@ function unityFramework(Module) {
         SendMessage("GmSoft", "SetParam", JSON.stringify(window["GMSOFT_OPTIONS"]))
     }
     function _SDK_PreloadAd() {
-        let shou = "e"
         if (window["GMSOFT_OPTIONS"].enableAds == true) {
-            if (shou = "e") {
+            if (afg.ready) {
                 SendMessage("GmSoft", "PreloadRewardedVideoCallback", 1);
                 afg.adBreak({
                     type: "reward",
