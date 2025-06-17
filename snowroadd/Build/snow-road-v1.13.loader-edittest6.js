@@ -384,6 +384,10 @@ function createUnityInstance(t, n, l) {
     }
     ,
     c.fetchWithProgress = function(e, t) {
+        if (e === "test_connection.txt") {
+            console.log("removed garbage")
+            e = ""
+        }
         var n = function() {};
         return t && t.onProgress && (n = t.onProgress),
         fetch(e, t).then(function(e) {
