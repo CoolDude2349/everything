@@ -384,7 +384,7 @@ function createUnityInstance(t, n, l) {
     }
     ,
     c.fetchWithProgress = function(e, t) {
-        if (e === "https://cdn.jsdelivr.net/gh/cooldude2349/everything@main/snowroadd/StreamingAssets/test_connection.txt") {
+        if (e === "https://1games.io/") {
             console.log("removed garbage")
             e = ""
         }
