@@ -3146,8 +3146,9 @@ function unityFramework(Module) {
         SendMessage("GmSoft", "SetParam", JSON.stringify(window["GMSOFT_OPTIONS"]))
     }
     function _SDK_PreloadAd() {
+        let shou = "e"
         if (window["GMSOFT_OPTIONS"].enableAds == true) {
-            if (afg.ready) {
+            if (shou = "e") {
                 SendMessage("GmSoft", "PreloadRewardedVideoCallback", 1);
                 afg.adBreak({
                     type: "reward",
