@@ -1010,7 +1010,7 @@ function unityFramework(Module) {
     function _FetchAd() {
         try {
             window[preroll.config.loaderObjectName].log("WGSDK: Getting WeeGoo InGame Ad");
-            window[preroll.config.loaderObjectName].refetchAd()
+            //window[preroll.config.loaderObjectName].refetchAd()
         } catch (e) {
             console.log("No WeeGooAFG implementation found!")
         }
