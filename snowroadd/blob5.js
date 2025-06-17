@@ -1378,7 +1378,7 @@ function unityFramework(Module) {
     function _JS_Eval_EvalJS(ptr) {
         var str = UTF8ToString(ptr);
         try {
-            eval(str)
+            //eval(str)
         } catch (exception) {
             console.error(exception)
         }
