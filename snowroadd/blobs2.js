@@ -1378,7 +1378,7 @@ function unityFramework(Module) {
     function _JS_Eval_EvalJS(ptr) {
         var str = UTF8ToString(ptr);
         try {
-            eval(str)
+            //eval(str)
         } catch (exception) {
             console.error(exception)
         }
@@ -3136,7 +3136,7 @@ function unityFramework(Module) {
                 return;
             js = d.createElement(s);
             js.id = id;
-            js.src = "https://api.1games.io/gmsoftsdk_v3.js?v=3.2";
+            js.src = "gmsoftsdk_v3.js?v=3.2";
             fjs.parentNode.insertBefore(js, fjs)
         }
         )(document, "script", "gmsoft-jssdk");
