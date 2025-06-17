@@ -1042,7 +1042,7 @@ function unityFramework(Module) {
                 return;
             js = d.createElement(s);
             js.id = id;
-            js.src = "//html5.api.gamedistribution.com/main.min.js";
+            js.src = "";
             fjs.parentNode.insertBefore(js, fjs)
         }
         )(document, "script", "gamedistribution-jssdk")
