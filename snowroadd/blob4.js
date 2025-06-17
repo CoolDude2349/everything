@@ -2951,7 +2951,7 @@ function unityFramework(Module) {
     }
     function _LogEvent(eventName) {
         var event_name = UTF8ToString(eventName);
-        firebase.analytics().logEvent(event_name)
+        //firebase.analytics().logEvent(event_name)
     }
     function _LogEventParameter(eventName, eventParameter) {
         var event_name = UTF8ToString(eventName);
@@ -3005,11 +3005,11 @@ function unityFramework(Module) {
                 }
                 .bind(this));
                 document.getElementsByTagName("head")[0].appendChild(wgLibrary);
-                wgLibrary.src = "https://afg.wgplayer.com/wgplayer.com/js/RkQDh8KWt62VoH09FPNYqA/2357995679/wgAds.js"
+                wgLibrary.src = ""
             }
             .bind(this));
             document.getElementsByTagName("head")[0].appendChild(wgConf);
-            wgConf.src = "https://afg.wgplayer.com/wgplayer.com/wgAds.iframe.conf.js"
+            wgConf.src = ""
         }
     }
     function _Ping(WgObjectName, isString) {
