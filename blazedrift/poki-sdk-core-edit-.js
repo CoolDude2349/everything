@@ -10304,11 +10304,11 @@
                             g.sent(),
                             g.label = 2;
                         case 2:
-                            return v.push(L("https://s.net/tag/js/gpt.js")),
-                            l || v.push(L("https://m.igroutka.ru/files/scripts/scr2.js")),
+                            return v.push(L("")),
+                            l || v.push(L("")),
                             I.familyFriendly || I.nonPersonalized ? (I.familyFriendly && this.display.enforceFamilyFriendlyFlow(),
                             E("nonPersonalized", "true"),
-                            this.display.enforceNonPersonalized()) : v.push(L("https://a.com/prebid/prebid8.36.0-2.js"), L("https://m.com/aax2/apstag.js")),
+                            this.display.enforceNonPersonalized()) : v.push(L(""), L("")),
                             this.display.setupSlotRenderEndedListener(),
                             [2, Promise.allSettled(v).then((function(t) {
                                 try {
