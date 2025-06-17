@@ -2163,71 +2163,37 @@ function createUnityInstance(t, n, l) {
             c.wasmBinary = e[1],
             e[0](c)
         });
-        var e = T("dataUrl"); // T likely returns a Promise<Uint8Array>
+        var e = T("dataUrl");
+        c.preRun.push(function() {
+            c.addRunDependency("dataUrl"),
+            e.then(function(e) {
+                console.log("First few bytes:", e.slice(0, 16));
+console.log("Expected header:", String.fromCharCode.apply(null, e.slice(0, 17)));
 
-c.preRun.push(function () {
-    c.addRunDependency("dataUrl");
-
-    e.then(function (e) {
-        try {
-            var t = new DataView(e.buffer, e.byteOffset, e.byteLength),
-                n = 0,
-                r = "UnityWebData1.0\0";
-
-            // ✅ Fix incorrect header check
-            var actualHeader = String.fromCharCode.apply(null, e.subarray(n, n + r.length));
-            if (actualHeader !== r) {
-                throw "Unknown data format: expected '" + r + "', got '" + actualHeader + "'";
-            }
-
-            n += r.length;
-
-            // ✅ Check buffer bounds before reading file table end offset
-            if (n + 4 > e.byteLength) throw "Unexpected end of buffer (reading file table offset)";
-            var o = t.getUint32(n, true);
-            n += 4;
-
-            if (o > e.byteLength) throw "Invalid file table end offset";
-
-            // ✅ Begin reading file entries
-            while (n < o) {
-                if (n + 12 > e.byteLength) throw "Unexpected end of buffer (reading file metadata)";
-
-                var a = t.getUint32(n, true);  // file data offset
-                n += 4;
-                var i = t.getUint32(n, true);  // file size
-                n += 4;
-                var s = t.getUint32(n, true);  // path string length
-                n += 4;
-
-                if (n + s > e.byteLength) throw "Unexpected end of buffer (reading file path)";
-                var l = String.fromCharCode.apply(null, e.subarray(n, n + s));
-                n += s;
-
-                // ✅ Create path hierarchy
-                var d = 0, u = l.indexOf("/", d) + 1;
-                while (u > 0) {
-                    c.FS_createPath(l.substring(0, d), l.substring(d, u - 1), true, true);
-                    d = u;
-                    u = l.indexOf("/", d) + 1;
+                var t = new DataView(e.buffer,e.byteOffset,e.byteLength)
+                  , n = 0
+                  , r = "UnityWebData1.0\0";
+                if (!String.fromCharCode.apply(null, e.subarray(n, n + r.length)) == r)
+                    throw "unknown data format";
+                var o = t.getUint32(n += r.length, !0);
+                for (n += 4; n < o; ) {
+                    var a = t.getUint32(n, !0)
+                      , i = (n += 4,
+                    t.getUint32(n, !0))
+                      , s = (n += 4,
+                    t.getUint32(n, !0))
+                      , l = (n += 4,
+                    String.fromCharCode.apply(null, e.subarray(n, n + s)));
+                    n += s;
+                    for (var d = 0, u = l.indexOf("/", d) + 1; 0 < u; d = u,
+                    u = l.indexOf("/", d) + 1)
+                        c.FS_createPath(l.substring(0, d), l.substring(d, u - 1), !0, !0);
+                    c.FS_createDataFile(l, null, e.subarray(a, a + i), !0, !0, !0)
                 }
-
-                // ✅ Ensure file data offset and size are in range
-                if (a + i > e.byteLength) throw "File data range out of bounds";
-
-                // ✅ Create file in virtual FS
-                c.FS_createDataFile(l, null, e.subarray(a, a + i), true, true, true);
-            }
-
-            c.removeRunDependency("dataUrl");
-
-        } catch (err) {
-            console.error("Failed to load Unity dataUrl:", err);
-            throw err; // let the promise reject properly
-        }
-    });
-});
-
+                c.removeRunDependency("dataUrl")
+            })
+        })
+    }
     return new Promise(function(e, t) {
         c.SystemInfo.hasWebGL ? c.SystemInfo.hasWasm ? (1 == c.SystemInfo.hasWebGL && c.print('Warning: Your browser does not support "WebGL 2" Graphics API, switching to "WebGL 1"'),
         c.startupErrorHandler = t,
