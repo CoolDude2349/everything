@@ -357,7 +357,7 @@
     }
     var p = function() {
         var e = window.pokiSDKVersion || o("ab") || "54cfaf7bb10e29acef1b4b5dd11eeaa74dcb6036"
-          , t = "poki-sdk-core-".concat(e, ".js");
+          , t = "poki-sdk-core-edit-".concat(e, ".js");
         r && (t = "poki-sdk-kids-".concat(e, ".js")),
         i && (t = "poki-sdk-playground-".concat(e, ".js")),
         a && (t = "poki-sdk-hoist-".concat(e, ".js"));
