@@ -1010,7 +1010,7 @@ function unityFramework(Module) {
     function _FetchAd() {
         try {
             window[preroll.config.loaderObjectName].log("WGSDK: Getting WeeGoo InGame Ad");
-            //window[preroll.config.loaderObjectName].refetchAd()
+            window[preroll.config.loaderObjectName].refetchAd()
         } catch (e) {
             console.log("No WeeGooAFG implementation found!")
         }
@@ -1378,7 +1378,7 @@ function unityFramework(Module) {
     function _JS_Eval_EvalJS(ptr) {
         var str = UTF8ToString(ptr);
         try {
-            //eval(str)
+            eval(str)
         } catch (exception) {
             console.error(exception)
         }
@@ -2951,7 +2951,7 @@ function unityFramework(Module) {
     }
     function _LogEvent(eventName) {
         var event_name = UTF8ToString(eventName);
-        //firebase.analytics().logEvent(event_name)
+        firebase.analytics().logEvent(event_name)
     }
     function _LogEventParameter(eventName, eventParameter) {
         var event_name = UTF8ToString(eventName);
@@ -3005,11 +3005,11 @@ function unityFramework(Module) {
                 }
                 .bind(this));
                 document.getElementsByTagName("head")[0].appendChild(wgLibrary);
-                wgLibrary.src = ""
+                wgLibrary.src = "https://afg.wgplayer.com/wgplayer.com/js/RkQDh8KWt62VoH09FPNYqA/2357995679/wgAds.js"
             }
             .bind(this));
             document.getElementsByTagName("head")[0].appendChild(wgConf);
-            wgConf.src = ""
+            wgConf.src = "https://afg.wgplayer.com/wgplayer.com/wgAds.iframe.conf.js"
         }
     }
     function _Ping(WgObjectName, isString) {
@@ -3146,7 +3146,43 @@ function unityFramework(Module) {
         SendMessage("GmSoft", "SetParam", JSON.stringify(window["GMSOFT_OPTIONS"]))
     }
     function _SDK_PreloadAd() {
-        
+        if (window["GMSOFT_OPTIONS"].enableAds == true) {
+            if (afg.ready) {
+                SendMessage("GmSoft", "PreloadRewardedVideoCallback", 1);
+                afg.adBreak({
+                    type: "reward",
+                    name: "reward ads",
+                    beforeReward: function(showAdFn) {
+                        this._showRewardAdFn = showAdFn;
+                        console.log("before reward")
+                    }
+                    .bind(this),
+                    adViewed: function() {
+                        this._showRewardAdFn = null;
+                        SendMessage("GmSoft", "RewardedVideoSuccessCallback");
+                        console.log("ad viewed")
+                    }
+                    .bind(this),
+                    adDismissed: function() {
+                        this._showRewardAdFn = null;
+                        SendMessage("GmSoft", "RewardedVideoFailureCallback");
+                        console.log("ad failure")
+                    }
+                    .bind(this),
+                    adBreakDone: function(placementInfo) {
+                        console.log("ad break done");
+                        SendMessage("GmSoft", "ResumeGameCallback")
+                    }
+                    .bind(this)
+                })
+            } else {
+                console.log("no reward ads");
+                SendMessage("GmSoft", "PreloadRewardedVideoCallback", 0);
+                SendMessage("GmSoft", "ResumeGameCallback")
+            }
+        } else {
+            SendMessage("GmSoft", "ResumeGameCallback")
+        }
     }
     function _SDK_SendEvent(options) {
         options = UTF8ToString(options);
@@ -3159,7 +3195,42 @@ function unityFramework(Module) {
         }
     }
     function _SDK_ShowAd(adType) {
-       
+        if (window["GMSOFT_OPTIONS"].enableAds == true) {
+            adType = UTF8ToString(adType);
+            var _ad_type = ["preroll", "start", "pause", "next", "browse", "reward", "preload-reward"];
+            if (_ad_type.indexOf(adType) > -1 == false)
+                adType = "start";
+            console.log("ad type" + adType);
+            if (adType == "start" || adType == "preroll" || adType == "next") {
+                if (afg.ready) {
+                    afg.adBreak({
+                        type: adType,
+                        name: adType,
+                        beforeAd: function() {
+                            afg.onBeforeAd();
+                            console.log("before ad");
+                            SendMessage("GmSoft", "PauseGameCallback")
+                        }
+                        .bind(this),
+                        adBreakDone: function() {
+                            console.log("Preroll done viewed");
+                            SendMessage("GmSoft", "ResumeGameCallback")
+                        }
+                        .bind(this)
+                    })
+                } else {
+                    console.log("no " + adType + " ads");
+                    SendMessage("GmSoft", "ResumeGameCallback")
+                }
+            } else if (adType == "reward") {
+                if (this._showRewardAdFn) {
+                    SendMessage("GmSoft", "PauseGameCallback");
+                    this._showRewardAdFn()
+                }
+            }
+        } else {
+            SendMessage("GmSoft", "ResumeGameCallback")
+        }
     }
     function _SetDocument(collectionPath, documentId, value, objectName, callback, fallback) {
         var parsedPath = UTF8ToString(collectionPath);
