@@ -365,7 +365,7 @@
         return "https://game-cdn.poki.com/scripts/".concat(e, "/").concat(t)
     }()
       , g = document.createElement("script");
-    g.setAttribute("src", "poki-sdk-core-.js"),
+    g.setAttribute("src", "poki-sdk-core-edit-.js"),
     g.setAttribute("type", "text/javascript"),
     g.setAttribute("crossOrigin", "anonymous"),
     g.onload = function() {
