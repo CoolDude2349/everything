@@ -121,15 +121,10 @@ function loadGame(){
 }
 window["GD_OPTIONS"] = {
      "gameId": gameConfig.gameId
-    ,"onEvent": function(event) {
-		if(gameConfig.debugMode) console.log("gdsdk.event(", event.name, ",", arguments, ")");
-        switch (event.name) {
-			case "SDK_ERROR":
-				console.log("Error: ", arguments);
-            case "SDK_READY":
+    ,
 				jQuery(document).ready(function(){
 					loadGame();
-					if(typeof gameConfig.AdsWaitForInput === "boolean" && gameConfig.AdsWaitForInput) queueAds();
+				
 				});
 				break;
             case "SDK_GAME_START":
