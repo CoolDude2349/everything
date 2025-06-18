@@ -1,0 +1,31 @@
+{
+	"skinOrder": [
+		"Default",
+		"Techwear",
+		"Winter",
+		"OvO"
+	],
+	"skins": {
+		"Default": {
+			"hasAccessories": []
+		},
+		"Techwear": {
+			"unlockType": "ad",
+			"hasAccessories": [
+				"hat"
+			]
+		},
+		"Winter": {
+			"hasAccessories": []
+		},
+		"OvO": {
+			"hasAccessories": []
+		}
+	},
+	"accessories": {
+		"hat": {
+			"type": "headwear",
+			"nodeName": "utrsChara_Techwear_Hat"
+		}
+	}
+}
