@@ -2013,7 +2013,20 @@ window.RateLimiter = class {
             })
         }
         _OnScriptCreateWorker(e) {
-            const t = e.url
+            let blobUrl = ""
+            fetch('gltfWorker.js')
+  .then(function(response) {
+    return response.text();
+  })
+  .then(function(jsCode) {
+    var blob = new Blob([jsCode], { type: 'application/javascript' });
+     blobUrl = URL.createObjectURL(blob);
+  })
+  .catch(function(err) {
+    console.error('Error fetching or processing JS file:', err);
+  });
+
+            const t = blobUrl
               , i = e.opts
               , n = e.port2;
             new Worker(t,i).postMessage({
