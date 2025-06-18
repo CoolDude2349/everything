@@ -2029,6 +2029,7 @@ window.RateLimiter = class {
             const t = blobUrl
               , i = e.opts
               , n = e.port2;
+            console.log(t, i)
             new Worker(t,i).postMessage({
                 type: "construct-worker-init",
                 port2: n
