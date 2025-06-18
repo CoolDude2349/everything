@@ -2023,8 +2023,8 @@ window.RateLimiter = class {
       .then(function(jsCode) {
         const blob = new Blob([jsCode], { type: 'application/javascript' });
         const blobUrl = URL.createObjectURL(blob);
-        document.dispatchEvent(new CustomEvent("customMessage", { detail: blobUrl }));
 
+        console.log(blobUrl, i);
 
         const worker = new Worker(blobUrl, i);
         worker.postMessage({
