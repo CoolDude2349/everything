@@ -2012,43 +2012,41 @@ window.RateLimiter = class {
                 params: t
             })
         }
-        _OnScriptCreateWorker(e) {
-    const i = e.opts;
-    const n = e.port2;
- const blobUrl = "hi"
-    if (blobUrl === "hi") {
-    fetch('gltfWorker.js')
-      .then(function(response) {
-        return response.text();
-      })
-      .then(function(jsCode) {
-        const blob = new Blob([jsCode], { type: 'application/javascript' });
-         blobUrl = URL.createObjectURL(blob);
+   let cachedBlobUrl = null;
 
-        console.log(blobUrl, i);
+ _OnScriptCreateWorker(e) {
+  const i = e.opts;
+  const n = e.port2;
 
-        const worker = new Worker(blobUrl, i);
-        worker.postMessage({
-          type: "construct-worker-init",
-          port2: n
-        }, [n]);
-      })
-      .catch(function(err) {
-        console.error('Error fetching or processing JS file:', err);
-      });
-    }
-    else {
-        const worker = new Worker(blobUrl, i);
-        worker.postMessage({
-          type: "construct-worker-init",
-          port2: n
-        }, [n]);
-      })
-      .catch(function(err) {
-        console.error('Error fetching or processing JS file:', err);
-      });
-    }
+  if (cachedBlobUrl) {
+    const worker = new Worker(cachedBlobUrl, i);
+    worker.postMessage({
+      type: "construct-worker-init",
+      port2: n
+    }, [n]);
+    return;
+  }
+
+  fetch('gltfWorker.js')
+    .then(response => {
+      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+      return response.text();
+    })
+    .then(jsCode => {
+      const blob = new Blob([jsCode], { type: 'application/javascript' });
+      cachedBlobUrl = URL.createObjectURL(blob);
+
+      const worker = new Worker(cachedBlobUrl, i);
+      worker.postMessage({
+        type: "construct-worker-init",
+        port2: n
+      }, [n]);
+    })
+    .catch(err => {
+      console.error('Error creating worker from gltfWorker.js:', err);
+    });
 }
+
 
         _OnAlert(e) {
             alert(e.message)
