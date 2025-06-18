@@ -92,6 +92,10 @@ class GltfModelWTop {
   }
 
   createBoneBufferViews() {
+    console.log("this._sdkType.gltfData.gltf", this._sdkType.gltfData.gltf)
+console.log("cloned gltfData.nodes", this.gltfData.nodes)
+console.log("cloned gltfData.skinnedNodes", this.gltfData.skinnedNodes)
+
     // Iterate through all nodes
     const MATRIX_SIZE = 16
     const boneBufferViews = this.boneBufferViews
