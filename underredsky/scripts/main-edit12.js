@@ -4985,7 +4985,7 @@ let A = [{
     get sdk() {
         return globalThis.PokiSDK
     },
-    scriptSrc: "//game-cdn.poki.com/scripts/v2/poki-sdk.js",
+    scriptSrc: "poki-sdk.js",
     hasAds: !0,
     noInterstitial: !1,
     noRewarded: !1,
