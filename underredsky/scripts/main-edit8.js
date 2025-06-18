@@ -5568,7 +5568,7 @@ window.C3_IsSupported) {
     window.c3_runtimeInterface = new self.RuntimeInterface({
         useWorker: Te,
         workerMainUrl: "workermain.js",
-        runtimeScriptList: ["https://cdn.jsdelivr.net/gh/cooldude2349/everything@main/underredsky/scripts/c3main-edit2.js"],
+        runtimeScriptList: ["https://cdn.jsdelivr.net/gh/cooldude2349/everything@main/underredsky/scripts/c3main-edit3.js"],
         scriptFolder: "scripts/",
         exportType: "html5"
     })
