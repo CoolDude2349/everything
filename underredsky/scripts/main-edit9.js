@@ -2015,14 +2015,15 @@ window.RateLimiter = class {
         _OnScriptCreateWorker(e) {
     const i = e.opts;
     const n = e.port2;
-
+ const blobUrl = "hi"
+    if (blobUrl === "hi") {
     fetch('gltfWorker.js')
       .then(function(response) {
         return response.text();
       })
       .then(function(jsCode) {
         const blob = new Blob([jsCode], { type: 'application/javascript' });
-        const blobUrl = URL.createObjectURL(blob);
+         blobUrl = URL.createObjectURL(blob);
 
         console.log(blobUrl, i);
 
@@ -2035,6 +2036,18 @@ window.RateLimiter = class {
       .catch(function(err) {
         console.error('Error fetching or processing JS file:', err);
       });
+    }
+    else {
+        const worker = new Worker(blobUrl, i);
+        worker.postMessage({
+          type: "construct-worker-init",
+          port2: n
+        }, [n]);
+      })
+      .catch(function(err) {
+        console.error('Error fetching or processing JS file:', err);
+      });
+    }
 }
 
         _OnAlert(e) {
