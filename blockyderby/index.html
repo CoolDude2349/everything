@@ -1,0 +1,304 @@
+<html>
+  <head>
+    <meta charset="UTF8">
+    <meta name="robots" content="noindex,follow">
+    <script defer="defer">
+      (() => {
+        "use strict";
+        var e = {
+            678: () => {
+              window.addEventListener("blur", (function() {
+                window.parent.postMessage({
+                  type: "syncUnityData"
+                }, "*")
+              })), window.addEventListener("keydown", (function(e) {
+                "Escape" === e.key && window.parent.postMessage({
+                  type: "escapeFullscreen"
+                }, "*")
+              })), window.sendDelayedMemoryUsage = function() {
+                setTimeout((() => {
+                  const e = null == window ? void 0 : window.performance.memory;
+                  if (!e) return;
+                  const {
+                    totalJSHeapSize: n,
+                    usedJSHeapSize: o,
+                    jsHeapSizeLimit: t
+                  } = e;
+                  window.parent.postMessage({
+                    type: "unityMemoryUsage",
+                    usageData: {
+                      type: "memoryUsage",
+                      totalJSHeapSize: n,
+                      usedJSHeapSize: o,
+                      jsHeapSizeLimit: t
+                    }
+                  }, "*")
+                }), 1e4)
+              }
+            },
+            951: () => {
+              (() => {
+                function e(e, n) {
+                  window.unityGameInstance && window.crazySDKObjectName ? (window.debugStub("Send message to Unity game instance", e, n), window.unityGameInstance.SendMessage(window.crazySDKObjectName, e, n)) : window.debugStub("unityGameInstance or crazySDKObjectName not defined, cannot send message", e, n)
+                }
+                window.stubDebugEnabled = window.location.href.includes("iframed_unity_debug=true"), window.crazySDKObjectName = null, window.oldSdkInitObject = null, window.debugStub = function(...e) {
+                  window.stubDebugEnabled && console.log("[StubSDK]", ...e)
+                }, window.addEventListener("message", (n => {
+                  if ("sendUnityMessage" === n.data.type) {
+                    if ("InitCallback" === n.data.methodName) return;
+                    window.debugStub("Got GF event", n.data), e(n.data.methodName, n.data.value)
+                  }
+                })), window.Crazygames = {
+                  load: () => {
+                    window.debugStub("Crazygames.load")
+                  },
+                  init: n => {
+                    if (window.debugStub("Crazygames.init forwarded to GF", n), window.crazySDKObjectName = n.crazySDKObjectName, window.parent.postMessage({
+                        type: "window.Crazygames.init",
+                        options: n
+                      }, "*"), window.oldSdkInitObject) e("InitCallback", JSON.stringify(window.oldSdkInitObject));
+                    else {
+                      const n = {
+                        gameLink: "" + new URL(window.location.href).hostname.split(".")[0],
+                        userInfo: {
+                          countryCode: "US",
+                          device: {
+                            type: "desktop"
+                          },
+                          os: {
+                            name: "Windows",
+                            version: "11"
+                          },
+                          browser: {
+                            name: "Chrome",
+                            version: "130.0.0.0"
+                          }
+                        }
+                      };
+                      window.debugStub("No oldSdkInitObject to send, sending temporary init object", n), e("InitCallback", JSON.stringify(n))
+                    }
+                  },
+                  requestAd: e => {
+                    window.debugStub("Crazygames.requestAd forwarded to GF", e), window.parent.postMessage({
+                      type: "window.Crazygames.requestAd",
+                      adType: e
+                    }, "*")
+                  },
+                  happytime: () => {
+                    window.debugStub("Crazygames.happytime")
+                  },
+                  gameplayStart: () => {
+                    window.debugStub("Crazygames.gameplayStart")
+                  },
+                  gameplayStop: () => {
+                    window.debugStub("Crazygames.gameplayStop")
+                  },
+                  sdkGameLoadingStart: () => {
+                    window.debugStub("Crazygames.sdkGameLoadingStart")
+                  },
+                  sdkGameLoadingStop: () => {
+                    window.debugStub("Crazygames.sdkGameLoadingStop")
+                  },
+                  requestInviteUrl: e => {
+                    window.debugStub("Crazygames.requestInviteUrl", e)
+                  },
+                  requestBanners: e => {
+                    window.debugStub("Crazygames.requestBanners", e), console.warn("Stub SDK doesn't support banners, please migrate to the new Unity SDK")
+                  },
+                  screenshotReceived: () => {
+                    window.debugStub("Crazygames.screenshotReceived")
+                  },
+                  constants: [],
+                  getUnityInstance: () => {}
+                }, window.CrazySDK = {
+                  init: function(e) {
+                    window.debugStub("CrazySDK.init", e), window.Crazygames.init(e)
+                  },
+                  requestAd: function(e) {
+                    window.debugStub("CrazySDK.requestAd", e), window.Crazygames.requestAd(e)
+                  }
+                }
+              })()
+            },
+            526: () => {
+              window.debugEnabled = window.location.href.includes("iframed_unity_debug=true"), window.config = null, window.unityGameInstance = null, window.canvas = null, window.cachedCanvasSize = {
+                width: 0,
+                height: 0
+              }, window.debugLog = (...e) => {
+                window.debugEnabled && console.log("[IframedUnity56]", ...e)
+              }, window.addEventListener("message", (function(e) {
+                return n = this, o = function*() {
+                  const n = window.canvas;
+                  switch (e.data.type) {
+                    case "unity56config":
+                      window.debugLog("Got config", e.data), window.config = e.data.config, window.oldSdkInitObject = e.data.oldSdkInitObject;
+                      break;
+                    case "loadGame":
+                      window.debugLog("Requested loadGame", e.data), window.unityGameInstance && window.unityGameInstance.Quit ? window.unityGameInstance.Quit((() => window.loadGame(e.data.cacheControl))) : window.loadGame(e.data.cacheControl);
+                      break;
+                    case "focusGame":
+                      window.focus(), window.canvas && (window.canvas.tabIndex = 1, window.canvas.focus());
+                      break;
+                    case "unity56RequestFullScreen":
+                      if (!window.canvas) return;
+                      window.cachedCanvasSize = {
+                        width: n.width,
+                        height: n.height
+                      };
+                      const o = {
+                        width: window.screen.width,
+                        height: window.screen.height
+                      };
+                      n.width = o.width, n.height = o.height;
+                      break;
+                    case "unity56DisableFullScreen":
+                      if (!n || !window.cachedCanvasSize || 0 === window.cachedCanvasSize.width || 0 === window.cachedCanvasSize.height) return;
+                      n.width = window.cachedCanvasSize.width, n.height = window.cachedCanvasSize.height;
+                      break;
+                    case "disableGame":
+                      yield window.unityGameInstance.Quit()
+                  }
+                }, new Promise(((e, t) => {
+                  var a = e => {
+                      try {
+                        r(o.next(e))
+                      } catch (e) {
+                        t(e)
+                      }
+                    },
+                    i = e => {
+                      try {
+                        r(o.throw(e))
+                      } catch (e) {
+                        t(e)
+                      }
+                    },
+                    r = n => n.done ? e(n.value) : Promise.resolve(n.value).then(a, i);
+                  r((o = o.apply(n, null)).next())
+                }));
+                var n, o
+              })), window.addEventListener("load", (function() {
+                window.parent.postMessage({
+                  type: "unity56ready"
+                }, "*")
+              })), window.addEventListener("blur", (() => {
+                window.parent.postMessage({
+                  type: "syncUnityData"
+                }, "*")
+              })), window.loadGame = function(e) {
+                var n;
+                window.config || console.error("[IframedUnity56] config is missing");
+                const o = null == (n = window.config) ? void 0 : n.loaderOptions,
+                  {
+                    moduleJsonUrl: t,
+                    unityLoaderUrl: a
+                  } = o || {
+                    moduleJsonUrl: "",
+                    unityLoaderUrl: ""
+                  },
+                  i = document.createElement("script");
+                i.type = "text/javascript", i.onload = function() {
+                  var n, o, a;
+                  window.debugLog("Instantiating game"), window.unityGameInstance = null == (a = null == window ? void 0 : window.UnityLoader) ? void 0 : a.instantiate("canvas-container", t, {
+                    onProgress: function(e, n) {
+                      window.parent.postMessage({
+                        type: "loadProgress",
+                        progress: n
+                      }, "*")
+                    },
+                    Module: {
+                      errorhandler: (e, n, o) => !0,
+                      cacheControl: e,
+                      companyName: null == (n = window.config) ? void 0 : n.companyName,
+                      productName: null == (o = window.config) ? void 0 : o.productName,
+                      onRuntimeInitialized: function() {
+                        window.debugLog("Runtime initialized"), window.sendDelayedMemoryUsage(), window.canvas = document.getElementsByTagName("canvas")[0], window.parent.postMessage({
+                          type: "loadFinished"
+                        }, "*")
+                      }
+                    }
+                  })
+                }, i.src = a, document.body.appendChild(i), window.debugLog("Loading loader script", i.src)
+              }
+            },
+            729: () => {
+              (() => {
+                const e = [
+                  ["exception handling has been disabled", "noExceptionSupport"],
+                  ["The browser could not allocate enough memory", "failedToAllocateMemory"],
+                  ["Out of memory", "outOfMemory"],
+                  ["out of memory", "outOfMemory"],
+                  ["abort", "AbortedError"],
+                  ["NotAllowedError", "NotAllowedError"],
+                  ["TypeError", "TypeError"],
+                  ["ScriptError", "ScriptError"],
+                  ["NotSupportedError", "NotSupportedError"],
+                  ["RuntimeError", "RuntimeError"],
+                  ["RangeError", "RangeError"],
+                  ["InvalidStateError", "InvalidStateError"],
+                  ["SDK Not initialized", "SDKNotInitializedError"],
+                  ["NetworkError", "NetworkError"],
+                  ["DataCloneError", "DataCloneError"],
+                  ["ReferenceError", "ReferenceError"],
+                  ["SecurityError", "SecurityError"],
+                  ["InvalidAccessError", "InvalidAccessError"],
+                  ["ChunkLoadError", "ChunkLoadError"],
+                  ["QuotaExceededError", "QuotaExceededError"],
+                  ["TimeoutError", "TimeoutError"],
+                  ["NotFoundError", "NotFoundError"],
+                  ["NS_ERROR_", "NSError"],
+                  ["An error occurred running the Unity content on this page", "unknown"]
+                ];
+                let n = !1;
+                const o = (o, t) => {
+                  if (n) return !0;
+                  let a;
+                  if (n = !0, "string" != typeof o) return n = !1, !1;
+                  for (let n of e)
+                    if (o.includes(n[0])) {
+                      a = n[1];
+                      break
+                    } return a ? (window.parent.postMessage({
+                    type: "unityCrashError",
+                    error: a,
+                    errorMessage: `${o}`,
+                    origin: t
+                  }, "*"), !0) : (n = !1, !1)
+                };
+                var t;
+                t = window.alert, window.alert = function() {
+                    if (!o(arguments[0] || "", "alert")) return t.apply(this, arguments);
+                    window.parent.postMessage({
+                      type: "unityCrashModalOpen"
+                    }, "*")
+                  },
+                  function(e) {
+                    console.error = function() {
+                      return o(arguments[0] || "", "console"), e.apply(this, arguments)
+                    }
+                  }(console.error)
+              })()
+            }
+          },
+          n = {};
+
+        function o(t) {
+          var a = n[t];
+          if (void 0 !== a) return a.exports;
+          var i = n[t] = {
+            exports: {}
+          };
+          return e[t](i, i.exports, o), i.exports
+        }
+        o(951), o(678), o(729), o(526)
+      })();
+      //# sourceMappingURL=unity56.js.map
+    </script>
+  </head>
+  <body style="margin: 0; padding: 0">
+    <div id="canvas-container" style="position: fixed; inset: 0px; outline: none; padding: 0px; margin: 0px; border: 0px; background: rgb(35, 31, 32);">
+      <canvas id="#canvas" style="width: 100%; height: 100%; cursor: default;" width="809" height="507" tabindex="1"></canvas>
+    </div>
+    <script type="text/javascript" src="Build/UnityLoader-v3.js"></script>
+  </body>
+</html>
