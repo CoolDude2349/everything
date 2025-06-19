@@ -7,7 +7,7 @@ let settings = {
 
     // This function will be called when the ad begins and when your game should be paused. It's required that you mute your game at this point
     pauseGame: function () {
-        gameInstance.SendMessage('GameManager', 'PauseGame');
+        //gameInstance.SendMessage('GameManager', 'PauseGame');
     },
 
     // This callback is called when the ad is finished, you can resume your game and unmute your audio
@@ -30,13 +30,13 @@ let settings = {
 //Include the gdApi script
 (function(i,s,o,g,r,a,m){
     i['GameDistribution']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)};i[r].l=1*new Date();a=s.createElement(o);m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a, m);
-})(window, document, 'script', '//html5.api.gamedistribution.com/libs/gd/api.js', 'gdApi');
+})(window, document, 'script', '', 'gdApi');
 
 
 //Initialize the gdApi script with the previously defined settings
-gdApi(settings);
+//gdApi(settings);
 
 function ShowAd()
 {
-    gdApi.showBanner();
+    //gdApi.showBanner();
 }
