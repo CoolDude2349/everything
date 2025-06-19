@@ -1,6 +1,6 @@
 var adsenseScript = document.createElement('script');
 adsenseScript.async = true;
-adsenseScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+adsenseScript.src = '';
 adsenseScript.setAttribute('data-ad-client', 'ca-pub-8349441957149316');
 adsenseScript.setAttribute('data-ad-frequency-hint', '60s');
 adsenseScript.setAttribute('crossorigin', 'anonymous');
@@ -18,8 +18,8 @@ const adBreak = adConfig = function (o) {
 var rewardReadyShowAds = null;
 
 adConfig({
-    preloadAdBreaks: 'on',
-    sound: 'on',
+    preloadAdBreaks: 'off',
+    sound: 'off',
     onReady: () => {
         console.log("AdConfig Ready");
     },
@@ -29,7 +29,7 @@ function InitSDKJs() {
     // Game start logic
     let adConfigPromise =
         new Promise((resolve, reject) => adConfig({
-            preloadAdBreaks: 'on',
+            preloadAdBreaks: 'off',
             onReady: () => resolve(true)
         }));
     let timeoutPromise =
@@ -45,10 +45,10 @@ function InitSDKJs() {
         timeoutPromise
     ]).then((shouldShowPreRoll) => {
         if (shouldShowPreRoll) {
-            ShowPreRollJs();
+            //ShowPreRollJs();
         } else {
             console.log("start game called");
-            LoadRewardedAdsJs();
+            //LoadRewardedAdsJs();
             myGameInstance.SendMessage('RHMAdsManager', 'InitSucceed', 'ca-pub-8349441957149316');
         }
     });
@@ -60,7 +60,7 @@ function ShowPreRollJs() {
         type: 'start',
         adBreakDone: function () {
             console.log("start game called");
-            LoadRewardedAdsJs();
+            //LoadRewardedAdsJs();
             myGameInstance.SendMessage('RHMAdsManager', 'InitSucceed', 'ca-pub-8349441957149316');
         }, // always called, unblocks the game logic
     });
@@ -74,7 +74,7 @@ function CallInterstitialAdsJs() {
         name: 'restart-game',
         beforeAd: () => {
             console.log("Pause Game")
-            pauseGameBeforeAds()
+            //pauseGameBeforeAds()
         },
         afterAd: () => {
             console.log("Resume Game - After Ad")
