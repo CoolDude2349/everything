@@ -10,7 +10,7 @@ const scriptsInEvents = {
 
 	async Crazygames_Event7_Act1(runtime, localVars)
 	{
-		GameStartEvent();
+		//GameStartEvent();
 	},
 
 	async Crazygames_Event8_Act1(runtime, localVars)
