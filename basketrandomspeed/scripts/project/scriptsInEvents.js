@@ -5,7 +5,7 @@ const scriptsInEvents = {
 
 	async Crazygames_Event1_Act1(runtime, localVars)
 	{
-		CallAdsFromC3();
+		//CallAdsFromC3();
 	},
 
 	async Crazygames_Event7_Act1(runtime, localVars)
@@ -15,7 +15,7 @@ const scriptsInEvents = {
 
 	async Crazygames_Event8_Act1(runtime, localVars)
 	{
-		GameStopEvent();
+		//GameStopEvent();
 	}
 
 };
