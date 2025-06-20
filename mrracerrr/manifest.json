@@ -1,0 +1,56 @@
+{
+  "name": "MR RACER - Car Racing",
+  "short_name": "MR RACER - Car Racing",
+  "description": "Get ready to hit the streets with MR Racer, where thrilling action unfolds with stylish cars. Race at high speed with stunning supercars and beat the traffic.",
+  "start_url": "index.html",
+  "display": "fullscreen",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "id": "37993003",
+  "launch_handler": {
+      "client_mode": "auto"
+  },
+  "ms_start_compatible": true,
+  "categories": [
+      "games"
+  ],
+  "dir": "auto",
+  "orientation": "landscape",
+  "screenshots": [
+      {
+          "src": "Images/image1280.png",
+          "sizes": "1280x720",
+          "type": "image/png",
+          "platform": "wide"
+      },
+      {
+          "src": "Images/image720.png",
+          "sizes": "720x1280",
+          "type": "image/png",
+          "platform": "narrow"
+      },
+      {
+          "src": "Images/image1920.png",
+          "sizes": "1920x1080",
+          "type": "image/png",
+          "platform": "narrow"
+      }
+  ],
+  "icons": [
+      {
+          "src": "Images/icon512.png",
+          "sizes": "512x512",
+          "type": "image/png"
+      },
+      {
+          "src": "Images/icon192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+      },
+      {
+          "src": "Images/icon1920.png",
+          "sizes": "1920x1080",
+          "type": "image/png"
+      }
+  ]
+}
