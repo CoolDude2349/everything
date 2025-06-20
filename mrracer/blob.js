@@ -2840,7 +2840,7 @@ var unityFramework = ( () => {
                     return;
                 js = d.createElement(s);
                 js.id = id;
-                js.src = "min2.js";
+                js.src = "";
                 fjs.parentNode.insertBefore(js, fjs)
             }
             )(document, "script", "gamedistribution-jssdk")
