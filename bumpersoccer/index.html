@@ -2,20 +2,86 @@
 <html>
 
 <head>
+    <base href = "https://cdn.jsdelivr.net/gh/cooldude2349/everything@main/bumpersoccer/">
   <meta name='viewport'
     content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover' />
   <meta charset='utf-8'>
   <link rel="stylesheet" type="text/css" href="styles.css">
   <link rel="manifest" href="manifest.json">
   <style></style>
-  <title>Bumper Cars Soccer</title>
   <meta name="robots" content="noindex,nofollow" />
-  <script src="/poki-sdk.js"></script>
-  <script src="playcanvas-stable.min.js"></script>
+  <script src="playcanvas-stable-edit.min.js"></script>
   <script src="settings__.js"></script>
 </head>
 
+
 <body>
+    <script>
+        
+        const PokiSDK = (function () {
+    let initialized = false;
+
+    return {
+        init: function () {
+            return new Promise((resolve) => {
+                console.log("PokiSDK: Initializing...");
+                setTimeout(() => {
+                    initialized = true;
+                    console.log("PokiSDK: Initialized.");
+                    resolve();
+                }, 500); 
+            });
+        },
+
+        commercialBreak: function () {
+            return new Promise((resolve) => {
+                if (!initialized) {
+                    console.warn("PokiSDK: Not initialized!");
+                    return resolve();
+                }
+                console.log("PokiSDK: Showing commercial break...");
+                setTimeout(() => {
+                    console.log("PokiSDK: Commercial break finished.");
+                    resolve();
+                }, 1000); 
+            });
+        },
+
+        rewardedBreak: function () {
+            return new Promise((resolve) => {
+                if (!initialized) {
+                    console.warn("PokiSDK: Not initialized!");
+                    return resolve(false);
+                }
+                console.log("PokiSDK: Showing rewarded ad...");
+                setTimeout(() => {
+                    const rewardGiven = true; 
+                    console.log("PokiSDK: Rewarded ad complete. Reward:", rewardGiven);
+                    resolve(rewardGiven);
+                }, 4000);
+            });
+        },
+
+        gameplayStart: function () {
+            if (!initialized) {
+                console.warn("PokiSDK: Not initialized!");
+                return;
+            }
+            console.log("PokiSDK: Gameplay started.");
+        },
+        gameLoadingStart: function () {},
+        gameLoadingFinished: function() {},
+happyTime: function() {},
+        gameplayStop: function () {
+            if (!initialized) {
+                console.warn("PokiSDK: Not initialized!");
+                return;
+            }
+            console.log("PokiSDK: Gameplay stopped.");
+        }
+    };
+})();
+    </script>
   <script src="modules__.js"></script>
   <script src="start__.js"></script>
   <script src="loading__.js"></script>
