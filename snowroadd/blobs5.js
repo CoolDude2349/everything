@@ -3159,10 +3159,8 @@ function unityFramework(Module) {
                 SendMessage("GmSoft", "PreloadRewardedVideoCallback", 0);
                 SendMessage("GmSoft", "ResumeGameCallback")
             }
-        } else {
-            SendMessage("GmSoft", "ResumeGameCallback")
         }
-    }
+    
     function _SDK_SendEvent(options) {
         options = UTF8ToString(options);
         if (typeof gdsdk !== "undefined" && typeof gdsdk.sendEvent !== "undefined" && typeof options !== "undefined") {
