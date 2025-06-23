@@ -3174,7 +3174,7 @@ function unityFramework(Module) {
     function _SDK_ShowAd(adType) {
         if (window["GMSOFT_OPTIONS"].enableAds == true) {
             
-         //SendMessage("GmSoft", "ResumeGameCallback")
+         SendMessage("GmSoft", "ResumeGameCallback")
 
                
     }}
