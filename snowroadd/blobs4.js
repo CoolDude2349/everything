@@ -3147,34 +3147,13 @@ function unityFramework(Module) {
     }
     function _SDK_PreloadAd() {
         if (window["GMSOFT_OPTIONS"].enableAds == true) {
-            if (afg.ready) {
                 SendMessage("GmSoft", "PreloadRewardedVideoCallback", 1);
-                afg.adBreak({
-                    type: "reward",
-                    name: "reward ads",
-                    beforeReward: function(showAdFn) {
-                        this._showRewardAdFn = showAdFn;
-                        console.log("before reward")
-                    }
-                    .bind(this),
-                    adViewed: function() {
-                        this._showRewardAdFn = null;
-                        SendMessage("GmSoft", "RewardedVideoSuccessCallback");
-                        console.log("ad viewed")
-                    }
-                    .bind(this),
-                    adDismissed: function() {
-                        this._showRewardAdFn = null;
-                        SendMessage("GmSoft", "RewardedVideoFailureCallback");
-                        console.log("ad failure")
-                    }
-                    .bind(this),
-                    adBreakDone: function(placementInfo) {
-                        console.log("ad break done");
+                SendMessage("GmSoft", "RewardedVideoSuccessCallback");
+
+              
                         SendMessage("GmSoft", "ResumeGameCallback")
-                    }
-                    .bind(this)
-                })
+                    
+                  
             } else {
                 console.log("no reward ads");
                 SendMessage("GmSoft", "PreloadRewardedVideoCallback", 0);
