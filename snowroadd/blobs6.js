@@ -3173,42 +3173,11 @@ function unityFramework(Module) {
     }
     function _SDK_ShowAd(adType) {
         if (window["GMSOFT_OPTIONS"].enableAds == true) {
-            adType = UTF8ToString(adType);
-            var _ad_type = ["preroll", "start", "pause", "next", "browse", "reward", "preload-reward"];
-            if (_ad_type.indexOf(adType) > -1 == false)
-                adType = "start";
-            console.log("ad type" + adType);
-            if (adType == "start" || adType == "preroll" || adType == "next") {
-                if (afg.ready) {
-                    afg.adBreak({
-                        type: adType,
-                        name: adType,
-                        beforeAd: function() {
-                            afg.onBeforeAd();
-                            console.log("before ad");
-                            SendMessage("GmSoft", "PauseGameCallback")
-                        }
-                        .bind(this),
-                        adBreakDone: function() {
-                            console.log("Preroll done viewed");
-                            SendMessage("GmSoft", "ResumeGameCallback")
-                        }
-                        .bind(this)
-                    })
-                } else {
-                    console.log("no " + adType + " ads");
-                    SendMessage("GmSoft", "ResumeGameCallback")
-                }
-            } else if (adType == "reward") {
-                if (this._showRewardAdFn) {
-                    SendMessage("GmSoft", "PauseGameCallback");
-                    this._showRewardAdFn()
-                }
-            }
-        } else {
-            SendMessage("GmSoft", "ResumeGameCallback")
-        }
-    }
+            
+         //SendMessage("GmSoft", "ResumeGameCallback")
+
+               
+    }}
     function _SetDocument(collectionPath, documentId, value, objectName, callback, fallback) {
         var parsedPath = UTF8ToString(collectionPath);
         var parsedId = UTF8ToString(documentId);
