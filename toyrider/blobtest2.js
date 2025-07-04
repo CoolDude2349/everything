@@ -5638,7 +5638,7 @@ code.google.com/p/crypto-js/wiki/License
                 }
             }
         }
-        
+        var initObject = {}
          window.UnitySDK.onSdkScriptLoaded()
         SendMessage(window.UnitySDK.objectName, "InitCallback", JSON.stringify(initObject))
         
