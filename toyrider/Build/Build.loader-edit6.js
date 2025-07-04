@@ -1392,7 +1392,7 @@ function createUnityInstance(t, n, d) {
             }));
             return new Promise(function(i, e) {
                 var s = document.createElement("script");
-                s.src = "blob4.js",
+                s.src = "blob5.js",
                 s.onload = function() {
                     if ("undefined" == typeof unityFramework || !unityFramework) {
                         var e, t = [["br", "br"], ["gz", "gzip"]];
