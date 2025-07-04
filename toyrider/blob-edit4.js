@@ -7535,54 +7535,10 @@ code.google.com/p/crypto-js/wiki/License
         localStorage.removeItem(UTF8ToString(key))
     }
     function _RequestAdSDK(adType) {
-        var adTypeStr = window.unityStringify(adType);
-        var callbacks = {
-            adStarted: function() {
-                window.UnitySDK.unlockPointer();
-                SendMessage(window.UnitySDK.objectName, "AdEvent", JSON.stringify({
-                    name: "adStarted"
-                }))
-            },
-            adFinished: function() {
-                window.UnitySDK.lockPointer();
-                SendMessage(window.UnitySDK.objectName, "AdEvent", JSON.stringify({
-                    name: "adFinished"
-                }))
-            },
-            adError: function(error) {
-                SendMessage(window.UnitySDK.objectName, "AdEvent", JSON.stringify({
-                    name: "adError",
-                    error: error
-                }))
-            }
-        };
-        window.UnitySDK.ensureLoaded(function() {
-            window.CrazyGames.SDK.ad.requestAd(adTypeStr, callbacks)
-        })
+        
     }
     function _RequestBannersSDK(bannersJSON) {
-        var banners = JSON.parse(window.unityStringify(bannersJSON));
-        window.UnitySDK.ensureLoaded(function() {
-            window.CrazyGames.SDK.banner.requestOverlayBanners(banners, function(bannerId, message, error) {
-                switch (message) {
-                case "bannerRendered":
-                    SendMessage(window.UnitySDK.objectName, "AdEvent", JSON.stringify({
-                        name: "inGameBannerRendered",
-                        id: bannerId
-                    }));
-                    break;
-                case "bannerError":
-                    SendMessage(window.UnitySDK.objectName, "AdEvent", JSON.stringify({
-                        name: "inGameBannerError",
-                        id: bannerId,
-                        error: error
-                    }));
-                    break;
-                default:
-                    console.error("Unknown banner message in Jslib:", message)
-                }
-            })
-        })
+       
     }
     function _RequestInviteUrlSDK(url) {
         window.UnitySDK.ensureLoaded(function() {
@@ -13655,7 +13611,7 @@ code.google.com/p/crypto-js/wiki/License
         },
         requestAnimationFrame: function(func) {
             if (typeof requestAnimationFrame === "function") {
-                //requestAnimationFrame(func);
+                requestAnimationFrame(func);
                 return
             }
             var RAF = Browser.fakeRequestAnimationFrame;
