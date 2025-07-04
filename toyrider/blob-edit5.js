@@ -2528,6 +2528,7 @@ code.google.com/p/crypto-js/wiki/License
                     }
                     var requestJsonDict = body ? JSON.parse(body) : {};
                     if (requestJsonDict == null) {
+                        console.log("pharse it!!!!!!!!!!!!!" + body)
                         callback(http.EGAHTTPApiResponse.JsonDecodeFailed, null, requestId, eventCount);
                         GAHTTPApi.instance.sendSdkErrorEvent(EGASdkErrorCategory.Http, EGASdkErrorArea.EventsHttp, EGASdkErrorAction.FailHttpJsonDecode, EGASdkErrorParameter.Undefined, body, GAState.getGameKey(), GAState.getGameSecret());
                         return;
