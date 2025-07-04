@@ -5596,9 +5596,7 @@ code.google.com/p/crypto-js/wiki/License
         InitLeaderboard()
     }
     function _InitSDK(version, objectName) {
-        if (!window.Crazygames) {
-            return false
-        }
+        
         if (typeof UTF8ToString !== "undefined") {
             window.unityStringify = UTF8ToString
         } else {
@@ -5608,7 +5606,7 @@ code.google.com/p/crypto-js/wiki/License
             version: window.unityStringify(version),
             objectName: window.unityStringify(objectName),
             userObjectName: "CrazyGames.CrazyUser",
-            isSdkLoaded: false,
+            isSdkLoaded: true,
             waitingForLoad: [],
             pointerLockElement: undefined,
             onSdkScriptLoaded: function() {
@@ -5680,7 +5678,7 @@ code.google.com/p/crypto-js/wiki/License
         return true
     }
     function _InitSDK_Internal(playerPhotoSize, scopes) {
-        InitSDK(UTF8ToString(playerPhotoSize), scopes)
+        //InitSDK(UTF8ToString(playerPhotoSize), scopes)
     }
     function _IsMobileBrowser() {
         return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
