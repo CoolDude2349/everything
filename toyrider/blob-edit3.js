@@ -13655,7 +13655,7 @@ code.google.com/p/crypto-js/wiki/License
         },
         requestAnimationFrame: function(func) {
             if (typeof requestAnimationFrame === "function") {
-                requestAnimationFrame(func);
+                //requestAnimationFrame(func);
                 return
             }
             var RAF = Browser.fakeRequestAnimationFrame;
