@@ -3393,17 +3393,17 @@ code.google.com/p/crypto-js/wiki/License
                 ;
                 GAEvents.addEventToStore = function(eventData) {
                     if (!GAState.isEventSubmissionEnabled()) {
-                        return;
+                       // return;
                     }
                     if (!GAState.isInitialized()) {
-                        GALogger.w("Could not add event: SDK is not initialized");
-                        return;
+                        //GALogger.w("Could not add event: SDK is not initialized");
+                        //return;
                     }
                     try {
                         if (GAStore.isStoreTooLargeForEvents() && !GAUtilities.stringMatch(eventData["category"], /^(user|session_end|business)$/)) {
                             GALogger.w("Database too large. Event has been blocked.");
                             GAHTTPApi.instance.sendSdkErrorEvent(events_1.EGASdkErrorCategory.Database, events_1.EGASdkErrorArea.AddEventsToStore, events_1.EGASdkErrorAction.DatabaseTooLarge, events_1.EGASdkErrorParameter.Undefined, "", GAState.getGameKey(), GAState.getGameSecret());
-                            return;
+                            //return;
                         }
                         var ev = GAState.getEventAnnotations();
                         for (var e in eventData) {
