@@ -5526,12 +5526,12 @@ code.google.com/p/crypto-js/wiki/License
     }
     function _GameplayStartSDK() {
         window.UnitySDK.ensureLoaded(function() {
-            window.CrazyGames.SDK.game.gameplayStart()
+           // window.CrazyGames.SDK.game.gameplayStart()
         })
     }
     function _GameplayStopSDK() {
         window.UnitySDK.ensureLoaded(function() {
-            window.CrazyGames.SDK.game.gameplayStop()
+           // window.CrazyGames.SDK.game.gameplayStop()
         })
     }
     function _GetLanguageCode() {
@@ -5557,27 +5557,17 @@ code.google.com/p/crypto-js/wiki/License
     }
     function _GetUserSDK() {
         window.UnitySDK.ensureLoaded(function() {
-            window.CrazyGames.SDK.user.getUser(function(error, user) {
-                SendMessage(window.UnitySDK.userObjectName, "JSLibCallback_GetUser", JSON.stringify({
-                    error: error,
-                    userStr: JSON.stringify(user)
-                }))
-            })
+           
         })
     }
     function _GetUserTokenSDK() {
         window.UnitySDK.ensureLoaded(function() {
-            window.CrazyGames.SDK.user.getUserToken(function(error, token) {
-                SendMessage(window.UnitySDK.userObjectName, "JSLibCallback_GetUserToken", JSON.stringify({
-                    error: error,
-                    token: token
-                }))
-            })
+           
         })
     }
     function _HappyTimeSDK() {
         window.UnitySDK.ensureLoaded(function() {
-            window.CrazyGames.SDK.game.happytime()
+            //window.CrazyGames.SDK.game.happytime()
         })
     }
     function _HasKeyInLocalStorage(key) {
@@ -5596,9 +5586,7 @@ code.google.com/p/crypto-js/wiki/License
         InitLeaderboard()
     }
     function _InitSDK(version, objectName) {
-        if (!window.Crazygames) {
-            return false
-        }
+        
         if (typeof UTF8ToString !== "undefined") {
             window.unityStringify = UTF8ToString
         } else {
@@ -5608,7 +5596,7 @@ code.google.com/p/crypto-js/wiki/License
             version: window.unityStringify(version),
             objectName: window.unityStringify(objectName),
             userObjectName: "CrazyGames.CrazyUser",
-            isSdkLoaded: false,
+            isSdkLoaded: true,
             waitingForLoad: [],
             pointerLockElement: undefined,
             onSdkScriptLoaded: function() {
@@ -5650,37 +5638,20 @@ code.google.com/p/crypto-js/wiki/License
                 }
             }
         }
-        var script = document.createElement("script");
-        script.src = "https://sdk.crazygames.com/crazygames-sdk-v2.js";
-        document.head.appendChild(script);
-        script.addEventListener("load", function() {
-            window.UnitySDK.onSdkScriptLoaded()
+        
+         window.UnitySDK.onSdkScriptLoaded()
+        SendMessage(window.UnitySDK.objectName, "InitCallback", JSON.stringify(initObject))
+        
+        window.UnitySDK.ensureLoaded(function() {
+           
         });
         window.UnitySDK.ensureLoaded(function() {
-            window.CrazyGames.SDK.addInitCallback(function(initObject) {
-                SendMessage(window.UnitySDK.objectName, "InitCallback", JSON.stringify(initObject))
-            })
-        });
-        window.UnitySDK.ensureLoaded(function() {
-            window.CrazyGames.SDK.ad.hasAdblock(function(error, result) {
-                if (error) {
-                    console.error("Adblock usage error (callback)", error)
-                } else {
-                    SendMessage(window.UnitySDK.objectName, result ? "AdblockDetected" : "AdblockNotDetected")
-                }
-            })
-        });
-        window.UnitySDK.ensureLoaded(function() {
-            window.CrazyGames.SDK.user.addAuthListener(function(user) {
-                SendMessage(window.UnitySDK.userObjectName, "JSLibCallback_AuthListener", JSON.stringify({
-                    userStr: JSON.stringify(user)
-                }))
-            })
+           
         });
         return true
     }
     function _InitSDK_Internal(playerPhotoSize, scopes) {
-        InitSDK(UTF8ToString(playerPhotoSize), scopes)
+        //InitSDK(UTF8ToString(playerPhotoSize), scopes)
     }
     function _IsMobileBrowser() {
         return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
@@ -7745,36 +7716,15 @@ code.google.com/p/crypto-js/wiki/License
             }
         };
         window.UnitySDK.ensureLoaded(function() {
-            window.CrazyGames.SDK.ad.requestAd(adTypeStr, callbacks)
+           // window.CrazyGames.SDK.ad.requestAd(adTypeStr, callbacks)
         })
     }
     function _RequestBannersSDK(bannersJSON) {
-        var banners = JSON.parse(window.unityStringify(bannersJSON));
-        window.UnitySDK.ensureLoaded(function() {
-            window.CrazyGames.SDK.banner.requestOverlayBanners(banners, function(bannerId, message, error) {
-                switch (message) {
-                case "bannerRendered":
-                    SendMessage(window.UnitySDK.objectName, "AdEvent", JSON.stringify({
-                        name: "inGameBannerRendered",
-                        id: bannerId
-                    }));
-                    break;
-                case "bannerError":
-                    SendMessage(window.UnitySDK.objectName, "AdEvent", JSON.stringify({
-                        name: "inGameBannerError",
-                        id: bannerId,
-                        error: error
-                    }));
-                    break;
-                default:
-                    console.error("Unknown banner message in Jslib:", message)
-                }
-            })
-        })
+       
     }
     function _RequestInviteUrlSDK(url) {
         window.UnitySDK.ensureLoaded(function() {
-            window.Crazygames.requestInviteUrl(window.unityStringify(url))
+            //window.Crazygames.requestInviteUrl(window.unityStringify(url))
         })
     }
     function _RequestingEnvironmentData() {
