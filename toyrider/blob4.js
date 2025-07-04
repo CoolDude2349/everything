@@ -5519,7 +5519,7 @@ code.google.com/p/crypto-js/wiki/License
         ExecuteCodeRTB2()
     }
     function _FullAdShow() {
-        FullAdShow()
+        //FullAdShow()
     }
     function _GameReady_Internal() {
         GameReady()
