@@ -5399,7 +5399,7 @@ code.google.com/p/crypto-js/wiki/License
     }
     function _HappyTimeSDK() {
         window.UnitySDK.ensureLoaded(function() {
-            window.CrazyGames.SDK.game.happytime()
+          //  window.CrazyGames.SDK.game.happytime()
         })
     }
     function _HasKeyInLocalStorage(key) {
@@ -5474,6 +5474,21 @@ code.google.com/p/crypto-js/wiki/License
         script.src = "";
         document.head.appendChild(script);
         var initObject = {
+  "id": 101,
+  "name": "Jane Doe",
+  "email": "jane.doe@example.com",
+  "isActive": true,
+  "roles": ["admin", "editor"],
+  "profile": {
+    "age": 30,
+    "location": "New York",
+    "social": {
+      "twitter": "@janedoe",
+      "linkedin": "linkedin.com/in/janedoe"
+    }
+  }
+}
+
    
 };
         window.UnitySDK.onSdkScriptLoaded()
