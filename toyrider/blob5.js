@@ -4583,27 +4583,10 @@ code.google.com/p/crypto-js/wiki/License
                 if (message) {
                     message = message + ": ";
                 }
-                if (needsInitialized && !GAState.isInitialized()) {
-                    if (warn) {
-                        GALogger.w(message + "SDK is not initialized");
-                    }
-                    return false;
-                }
-                if (needsInitialized && !GAState.isEnabled()) {
-                    if (warn) {
-                        GALogger.w(message + "SDK is disabled");
-                    }
-                    return false;
-                }
-                if (needsInitialized && !GAState.sessionIsStarted()) {
-                    if (warn) {
-                        GALogger.w(message + "Session has not started yet");
-                    }
-                    return false;
-                }
+               
                 return true;
             }
-            ;
+            
             GameAnalytics.initTimedBlockId = -1;
             GameAnalytics.methodMap = {};
             return GameAnalytics;
