@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <base href = "https://cdn.jsdelivr.net/gh/cooldude2349/everything@main/toyrider/">
+    <base href="https://cdn.jsdelivr.net/gh/cooldude2349/everything@main/toyrider/">
     <meta charset="utf-8">
+    <title>Машинка Гоняет по Комнате</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="favicon.ico">
     <style>
@@ -15,9 +16,53 @@
     <div id="unity-container">
         <canvas id="unity-canvas"></canvas>
     </div>
+
+    
+    <script>
+        let initGame = true; 
+        let nowFullAdOpen = false;
+
+        function FullAdShow() {
+            try {
+                window.ysdk.adv.showFullscreenAdv({
+                    callbacks: {
+                        onOpen: () => {
+                            console.log('Open Fullscreen Ad');
+                            if (initGame === true) {
+                                nowFullAdOpen = true;
+                                window.unityInstance.SendMessage('YandexGame', 'OpenFullAd');
+                            }
+                        },
+                        onClose: (wasShown) => {
+                            console.log('Close Fullscreen Ad (wasShown:', wasShown, ')');
+                            if (initGame === true) {
+                                nowFullAdOpen = false;
+                              
+                                window.unityInstance.SendMessage('YandexGame', 'CloseFullAd', 'true');
+                            }
+                            window.focus();
+                        },
+                        onError: (error) => {
+                            console.error('Error Fullscreen Ad', error);
+                            window.unityInstance.SendMessage('YandexGame', 'ErrorFullAd');
+                            
+                            window.unityInstance.SendMessage('YandexGame', 'CloseFullAd', 'true');
+                            window.focus();
+                        }
+                    }
+                });
+            } catch (e) {
+                console.error('CRASH FullAd Show: ', e.message);
+             
+                window.unityInstance.SendMessage('YandexGame', 'CloseFullAd', 'true');
+            }
+        }
+    </script>
+
+    <!-- Unity loader -->
     <script>
         var buildUrl = "Build/";
-        var loaderUrl = buildUrl + "Build.loader-edits3.js";
+        var loaderUrl = buildUrl + "Build.loader-edits6.js";
         var config = {
             dataUrl: "https://cdn.jsdelivr.net/npm/toyrider@1.0.0/5988766fc1897591820e0b478edf5967.data.unityweb",
             frameworkUrl: buildUrl + "ca74b758a8ad4593f43a7ae7adbd0a83.js.unityweb",
@@ -35,6 +80,8 @@
                 console.log("Loading progress: " + (progress * 100).toFixed(0) + "%");
             }).then((unityInstance) => {
                 console.log("Unity loaded successfully.");
+                window.unityInstance = unityInstance;
+                
             }).catch((message) => {
                 alert("Failed to load Unity: " + message);
             });
