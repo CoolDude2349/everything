@@ -7139,17 +7139,25 @@ code.google.com/p/crypto-js/wiki/License
             window.addEventListener("mousedown", jsVideoAttemptToPlayBlockedVideos);
         jsVideoPendingBlockedVideos[video] = v
     }
-    function _JS_Video_Play(video, muted) {
-        var v = videoInstances[video];
-        v.muted = muted || jsVideoAllAudioTracksAreDisabled(v);
-        var promise = v.play();
-        if (promise)
-            promise.catch(function(e) {
-                if (e.name == "NotAllowedError")
-                    jsVideoAddPendingBlockedVideo(video, v)
-            });
-        _JS_Video_SetLoop(video, v.loop)
+    function _JS_Video_Play(video) {
+    var v = videoInstances[video];
+    if (!v) return;
+console.log("eeeeeeeeeeerrrr")
+    try {
+        v.play();
+        
+        setTimeout(function () {
+            if (!v.ended) {
+                console.warn("Ad timeout fallback triggered");
+                jsVideoEnded.call(v); 
+            }
+        }, 1000); 
+    } catch (e) {
+        console.error("Ad failed to play:", e);
+        jsVideoEnded.call(v); 
     }
+}
+
     function _JS_Video_Seek(video, time) {
         var v = videoInstances[video];
         v.lastSeenPlaybackTime = v.currentTime = time
