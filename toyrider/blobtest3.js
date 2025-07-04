@@ -8113,7 +8113,7 @@ code.google.com/p/crypto-js/wiki/License
         })
     }
     function _StaticRBTDeactivate() {
-        StaticRBTDeactivate()
+        //StaticRBTDeactivate()
     }
     function _StickyAdActivityInternal(show) {
         StickyAdActivity(show)
