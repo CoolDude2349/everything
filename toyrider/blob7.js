@@ -4101,16 +4101,12 @@ code.google.com/p/crypto-js/wiki/License
                 GADevice.updateConnectionType();
                 if (!GAState.instance.isUnloading) {
                     GAThreading.performTaskOnGAThread(function() {
-                        if (!GameAnalytics.isSdkReady(true, true, "Could not add progression event")) {
-                            return;
-                        }
+                        
                         var sendScore = typeof score === "number";
                         GAEvents.addProgressionEvent(progressionStatus, progression01, progression02, progression03, sendScore ? score : 0, sendScore, customFields, mergeFields);
                     });
                 } else {
-                    if (!GameAnalytics.isSdkReady(true, true, "Could not add progression event")) {
-                        return;
-                    }
+                   
                     var sendScore = typeof score === "number";
                     GAEvents.addProgressionEvent(progressionStatus, progression01, progression02, progression03, sendScore ? score : 0, sendScore, customFields, mergeFields);
                 }
@@ -4126,16 +4122,12 @@ code.google.com/p/crypto-js/wiki/License
                 GADevice.updateConnectionType();
                 if (!GAState.instance.isUnloading) {
                     GAThreading.performTaskOnGAThread(function() {
-                        if (!GameAnalytics.isSdkReady(true, true, "Could not add design event")) {
-                            return;
-                        }
+                        
                         var sendValue = typeof value === "number";
                         GAEvents.addDesignEvent(eventId, sendValue ? value : 0, sendValue, customFields, mergeFields);
                     });
                 } else {
-                    if (!GameAnalytics.isSdkReady(true, true, "Could not add design event")) {
-                        return;
-                    }
+                   
                     var sendValue = typeof value === "number";
                     GAEvents.addDesignEvent(eventId, sendValue ? value : 0, sendValue, customFields, mergeFields);
                 }
@@ -4157,15 +4149,11 @@ code.google.com/p/crypto-js/wiki/License
                 GADevice.updateConnectionType();
                 if (!GAState.instance.isUnloading) {
                     GAThreading.performTaskOnGAThread(function() {
-                        if (!GameAnalytics.isSdkReady(true, true, "Could not add error event")) {
-                            return;
-                        }
+                        
                         GAEvents.addErrorEvent(severity, message, customFields, mergeFields);
                     });
                 } else {
-                    if (!GameAnalytics.isSdkReady(true, true, "Could not add error event")) {
-                        return;
-                    }
+                    
                     GAEvents.addErrorEvent(severity, message, customFields, mergeFields);
                 }
             }
