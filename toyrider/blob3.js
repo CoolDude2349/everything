@@ -5649,32 +5649,15 @@ code.google.com/p/crypto-js/wiki/License
             }
         }
         var script = document.createElement("script");
-        script.src = "https://sdk.crazygames.com/crazygames-sdk-v2.js";
+        script.src = "";
         document.head.appendChild(script);
-        script.addEventListener("load", function() {
-            window.UnitySDK.onSdkScriptLoaded()
-        });
-        window.UnitySDK.ensureLoaded(function() {
-            window.CrazyGames.SDK.addInitCallback(function(initObject) {
-                SendMessage(window.UnitySDK.objectName, "InitCallback", JSON.stringify(initObject))
-            })
-        });
-        window.UnitySDK.ensureLoaded(function() {
-            window.CrazyGames.SDK.ad.hasAdblock(function(error, result) {
-                if (error) {
-                    console.error("Adblock usage error (callback)", error)
-                } else {
-                    SendMessage(window.UnitySDK.objectName, result ? "AdblockDetected" : "AdblockNotDetected")
-                }
-            })
-        });
-        window.UnitySDK.ensureLoaded(function() {
-            window.CrazyGames.SDK.user.addAuthListener(function(user) {
-                SendMessage(window.UnitySDK.userObjectName, "JSLibCallback_AuthListener", JSON.stringify({
-                    userStr: JSON.stringify(user)
-                }))
-            })
-        });
+        var initObject = {
+   
+};
+        window.UnitySDK.onSdkScriptLoaded()
+        SendMessage(window.UnitySDK.objectName, "InitCallback", JSON.stringify(initObject))
+       
+        
         return true
     }
     function _InitSDK_Internal(playerPhotoSize, scopes) {
