@@ -672,7 +672,7 @@
                 });
                 return new Worker(URL.createObjectURL(blob),workerOpts)
             }
-            const absUrl = new URL(url,baseUrl);
+            const absUrl = new URL(url,"https://cdn.jsdelivr.net/gh/cooldude2349/everything@main/basketrandomspeed/scripts/");
             const isCrossOrigin = location.origin !== absUrl.origin;
             if (isCrossOrigin) {
                 const response = await fetch("https://cdn.jsdelivr.net/gh/cooldude2349/everything@main/basketrandomspeed/scripts/dispatchworker.js");
