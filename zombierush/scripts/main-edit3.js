@@ -464,7 +464,7 @@
                 });
                 return new Worker(URL.createObjectURL(blob), workerOpts)
             }
-            const absUrl = new URL(url, "https://cdn.jsdelivr.net/gh/cooldude2349/everything@main/zombierush/");
+            const absUrl = new URL(url, "https://cdn.jsdelivr.net/gh/cooldude2349/everything@main/zombierush/scripts/");
             const isCrossOrigin = location.origin !== absUrl.origin;
             if (isCrossOrigin) {
                 const response = await fetch(absUrl);
